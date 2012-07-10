@@ -1,16 +1,18 @@
 function caricaUltimiAnnunci(ultimoCaricato){
-	$.post("/alpha/annuncio/polling",function(data){
-		$("#ultimiAnnunci").prepend(data);
-	});
+	$.post("/alpha/annuncio/polling",
+			function(data){
+				$("#ultimiAnnunci").prepend(data);
+			});
 	
 	(function poll(){
 		   setTimeout(function(){
-		      $.ajax({ url: "/alpha/annuncio/polling",
-		    	  success: function(data){
-			        $("#ultimiAnnunci").prepend(data);
-			        poll();
-		    	  }
+			      $.ajax({
+			    	 url: "/alpha/annuncio/polling",
+			    	   	 success: function(data){
+			    		 $("#ultimiAnnunci").html(data);
+			    		 poll();
+			    	 }
 		      });
-		  }, 5000);
+		  }, 60000);
 		})();
 };

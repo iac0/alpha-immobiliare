@@ -6,6 +6,7 @@
             <th>Prezzo</th>
             <th>Riposta</th>
             <th>Zona</th>
+            <th>Data</th>
           </tr>
         </thead>
         
