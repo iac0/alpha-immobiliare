@@ -33,7 +33,7 @@
     <link rel="apple-touch-icon-precomposed" href="../ico/apple-touch-icon-57-precomposed.png">
   </head>
 
-  <body>
+  <body startId="${startId}">
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
@@ -139,7 +139,7 @@
     <script src="../js/alpha/menuFunction.js"></script>
     <script src="../js/alpha/routerData.js"></script>
     <script src="../js/alpha/main.js"></script>
-
+	
   </body>
   	<g:render template="/Menu/agenzia" />
   	<g:render template="/Menu/annuncio" />

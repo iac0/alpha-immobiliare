@@ -87,18 +87,11 @@ def alphaService
 	
 	@Secured (['ROLE_USER','ROLE_ADMIN'])
 	def polling () {
-		final query = Annuncio.where {
-			id == max(id)
-		}
-		Annuncio ann = query.find()
-		println ann.id+ann.telefono
-		if(!params.lastId || (params.lastId && params.lastId>max.id))
-		def annunci = Annuncio.withCriteria{
-			if(params.lastId)
-			gt ("id",params.lastId)
+		def annunci =  Annuncio.withCriteria{
 			order ("dataInserimento","desc")
 			maxResults 10
 		}
+		
 		def htmlAnn =""
 		htmlAnn+= g.render(template:"/annuncio/annuncioTemplate", collection:annunci)
 	
