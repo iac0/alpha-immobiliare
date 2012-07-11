@@ -9,6 +9,8 @@
 
     <!-- Le styles -->
     <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/prettify.css" rel="stylesheet">
+    <link href="../css/datepicker.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -33,7 +35,7 @@
     <link rel="apple-touch-icon-precomposed" href="../ico/apple-touch-icon-57-precomposed.png">
   </head>
 
-  <body startId="${startId}">
+  <body>
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
@@ -63,54 +65,40 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span12">
-          <div class="page-header">
-  			 <h2>Ultimi Annunci Inseriti:<small> Ordinati per data</small></h2>
-  			 <div id="ultimiInseriti" style="height:200px;overflow:auto">
+          <div class="">
+  			 <h2>Ultimi Annunci Inseriti: <small>Ordinati per data</small></h2>
+  			 <i class="icon-list-alt"></i> 
+  			 <div id="ultimiInseriti" style="max-height:200px;overflow:auto">
   			 <g:render template="/Menu/tabellaAnnunci" />
   			  </div>
   		  </div>	
   <hr/>
-		<div class="accordion" id="accordion2">
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                  Collapsible Group Item #1
-                </a>
-              </div>
-              <div id="collapseOne" class="accordion-body collapse in">
-                <div class="accordion-inner">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                  Collapsible Group Item #2
-                </a>
-              </div>
-              <div id="collapseTwo" class="accordion-body collapse">
-                <div class="accordion-inner">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                  Collapsible Group Item #3
-                </a>
-              </div>
-              <div id="collapseThree" class="accordion-body collapse">
-                <div class="accordion-inner">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div><!--/span-->
       </div><!--/row-->
+<div class="row-fluid">
+    <div class="span6 well prettyprint linenums" style="margin-bottom: 18px; min-height:250px;">
+	<i class="icon-user"></i>
+	<span class="spacer"><strong>I tuoi ultimi annunci</strong></span>
+    </div>
+    
+    <div class="span6 well prettyprint linenums" style="margin-bottom: 18px; min-height:250px;">
+	<i class="icon-search"></i>
+	<span class="spacer"><strong>Ricerca annunci</strong></span>
+	<hr/>
+	<div>
+		<div class="input-append date spacer" id="dp3" data-date="<g:formatDate format="dd-MM-yyyy" date="${new Date()}"/>" data-date-format="dd-mm-yyyy">
+		  	<input class="span2" size="16" type="text" value="">
+		 	 <span class="add-on"><i class="icon-th"></i></span>
+		</div>
+    </div>
+    </div>
+    
+<%--    <div class="span4 well prettyprint linenums" style="margin-bottom: 18px; min-height:250px;">--%>
+<%----%>
+<%--    </div>--%>
 
+ </div>
       <hr>
 
       <footer>
@@ -136,6 +124,7 @@
     <script src="../js/bootstrap-collapse.js"></script>
     <script src="../js/bootstrap-carousel.js"></script>
     <script src="../js/bootstrap-typeahead.js"></script>
+    <script src="../js/bootstrap-datepicker.js"></script>
     <script src="../js/alpha/menuFunction.js"></script>
     <script src="../js/alpha/routerData.js"></script>
     <script src="../js/alpha/main.js"></script>
@@ -143,4 +132,5 @@
   </body>
   	<g:render template="/Menu/agenzia" />
   	<g:render template="/Menu/annuncio" />
+  	<g:render template="/Menu/utente" />
 </html>

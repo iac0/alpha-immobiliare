@@ -70,7 +70,7 @@ function loadInserisciAnnuncio(){
 					
 				})
 		.success(function(){
-			salvataggioOk("#saveAnnuncioForm");
+			salvataggioAnnuncioOk("#saveAnnuncioForm");
 			
 		})
 		.error(function(){
@@ -160,7 +160,7 @@ function getRientroAnnuncio(){
 						},
 						function(data){
 						if(!data.error){
-						salvataggioOk("#saveAnnuncioForm");
+						salvataggioAnnuncioOk("#saveAnnuncioForm");
 						$("#rientroAnnuncio").remove();
 						}
 				});
@@ -174,10 +174,72 @@ function getRientroAnnuncio(){
 };
 
 
-function salvataggioOk(formId){
+
+
+function loadInserisciUtente(){
+	$("#password").tooltip({
+		trigger:'manual',
+		title:"Le password da te inserite non coincidono, riscrivile."
+		});
+	$("#password").click(function(){
+		$(this).tooltip("hide");
+		});
+	$("#saveUtente").click(function(){
+		$passwd = $("#password");
+		$passwd2 = $("#passwordCheck");
+		if($passwd.val() == $passwd2.val()){
+			$.post("/alpha/user/nuovoUtente",
+					{
+					username: $("#username").val(),
+					email: $("#email").val(),
+					ruolo: $("#ruolo").val(),
+					password: $("#password").val()
+					},
+					function(data){
+						if(!data.gormError) 
+							salvataggioUtenteOk("#saveUtenteForm");
+						else 
+							salvataggioUtenteKo("#saveUtenteForm");
+					});
+			
+		}
+		else {
+			$passwd.tooltip("show");
+			$passwd.val("");$passwd2.val("");
+		}
+		
+	});	
+	
+	$("#InserisciNuovoUtente").on("hidden",function(){	
+		$(".toClose").remove();
+		$("#saveUtenteForm input").val("");
+	});
+};
+
+
+
+
+function salvataggioAnnuncioOk(formId){
 	var tooltip= '<div class="alert alert-success toClose">Annuncio salvato con successo,<br> puoi chiudere la finestra</div>';
 	$(tooltip).appendTo($(formId).parent()).hide().show("blind",function(){
 		$("#InserisciAnnuncio .modal-body").scrollTop(1000);
 	});	
 	
-}
+};
+
+
+function salvataggioUtenteOk(formId){
+	var tooltip= '<div class="alert alert-success toClose">Utente salvato con successo,<br> puoi chiudere la finestra</div>';
+	$(tooltip).appendTo($(formId).parent()).hide().show("blind",function(){
+		$("#InserisciNuovoUente .modal-body").scrollTop(1000);
+	});	
+	
+};
+
+function salvataggioUtenteKo(formId){
+	var tooltip= '<div class="alert alert-error toClose">Si &egrave; verificato un problema,<br> puoi chiudere la finestra e rieffetua l\'operazione.</div>';
+	$(tooltip).appendTo($(formId).parent()).hide().show("blind",function(){
+		$("#InserisciNuovoUente .modal-body").scrollTop(1000);
+	});	
+	
+};
