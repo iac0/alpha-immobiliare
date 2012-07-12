@@ -18,5 +18,6 @@ loadInserisciUtente();
 
 
 caricaUltimiAnnunci();	
-$("#dp3").datepicker();
+$("#dp,#dp2").datepicker();
+
 });

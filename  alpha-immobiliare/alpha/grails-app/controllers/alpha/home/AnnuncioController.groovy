@@ -97,4 +97,31 @@ def alphaService
 	
 		render htmlAnn
 		}
+	def ricerca () {
+		def annunci =  Annuncio.withCriteria{
+			or{
+			if(params.prezzo)
+			eq("prezzo",params.prezzo.replaceAll("\\.","").replaceAll(" ", "").toInteger())
+			if(params.telefono)
+			eq("telefono",params.telefono.replaceAll(" ",""))
+			if(params.zona)
+			eq("zona",params.zona)
+			if(params.dataDa || params.dataA){
+			and{
+			if(params.dataDa)
+			gt("dataInserimento",new Date().parse("dd-MM-yyyy", params.dataDa))
+			if(params.dataA)
+			lt("dataInserimento",new Date().parse("dd-MM-yyyy", params.dataA))
+			}
+			}
+			order ("dataInserimento","desc")
+			}
+			
+		}
+		
+		def htmlAnn =""
+		htmlAnn+= g.render(template:"/annuncio/risultatiRicerca", collection:annunci)
+	
+		render htmlAnn
+		}
 }
