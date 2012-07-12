@@ -17,8 +17,8 @@ class AlphaTemplateTagLib {
 			listMenu = Menu.findAllByRole("ROLE_USER")
 		listMenu.eachWithIndex(){ Menu menu,i->
 			Integer index = attrs.attiva.toInteger()
-			String attiva = i==index?'active':'none'
-			divMenu+="<li class='${attiva}'><a href='#${menu.labelMenu.replaceAll(' ','')}' data-toggle='modal'>${menu.labelMenu}</a></li>"
+			
+			divMenu+="<li class='${}'><a href='#${menu.labelMenu.replaceAll(' ','')}' data-toggle='modal'>${menu.labelMenu}</a></li>"
 		
         }
 		divMenu +="""</ul>

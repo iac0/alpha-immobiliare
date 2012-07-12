@@ -16,3 +16,18 @@ function caricaUltimiAnnunci(ultimoCaricato){
 		  }, 60000);
 		})();
 };
+
+function startRicerca(){
+	$.post("/alpha/annuncio/ricerca",
+			{
+				telefono:$("#telefonoRicerca").val(),
+				zona:$("#zonaRicerca").val(),
+				prezzo:$("#prezzoRicerca").val(),
+				dataDa:$("#dataDa").val(),
+				dataA:$("#dataA").val()
+			},
+			function(data){
+				$("#risultatoRicerca").html(data);
+			});
+	
+};

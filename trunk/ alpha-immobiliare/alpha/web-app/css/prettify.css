@@ -12,7 +12,16 @@
 /* Specify class=linenums on a pre to get line numbering */
 .spacer {
   margin: 0 0 0 33px; /* IE indents via margin-left */
-} 
+}
+.spacer2 {
+  margin: 0 0 0 50px; /* IE indents via margin-left */
+}
+.mtop10{
+	margin-top:5px;
+}
+.floatr{
+	float:right;
+}
 ol.linenums li {
   padding-left: 12px;
   color: #bebec5;

@@ -77,21 +77,88 @@
         </div><!--/span-->
       </div><!--/row-->
 <div class="row-fluid">
-    <div class="span6 well prettyprint linenums" style="margin-bottom: 18px; min-height:250px;">
+    <div class="span6 well prettyprint linenums" id="mieiUltimi" style="margin-bottom: 18px; height:349px;">
 	<i class="icon-user"></i>
 	<span class="spacer"><strong>I tuoi ultimi annunci</strong></span>
+	<hr/>
+	<table class="table">
+	<thead>
+          <tr>
+            <th>#</th>
+            <th>Telefono</th>
+            <th>Prezzo</th>
+            <th>Zona</th>
+            <th>Data</th>
+            <th></th>
+          </tr>
+        </thead>
+         <tbody>
+         	${mieiUltimi}
+          </tbody>
+     </table>
+
+    </div>
+    <div class="span11 well prettyprint linenums" id="risultatiRicerca" style="margin-bottom: 18px; height:349px; overflow:auto;display:none;">
+	<i class="icon-user"></i>
+	<span class="spacer "><strong>Risutati della ricerca </strong><span class="btn btn-success floatr" id="ricercaOk"><i class="icon-arrow-left icon-white"></i> Torna ai miei Annunci</span></span>
+	<hr/>
+	<table class="table">
+	<thead>
+          <tr>
+            <th>#</th>
+            <th>Utente</th>
+            <th>Telefono</th>
+            <th>Prezzo</th>
+            <th>Riposta</th>
+            <th>Zona</th>
+            <th>Data</th>
+            <th></th>
+          </tr>
+        </thead>
+         <tbody id="risultatoRicerca">
+         	
+          </tbody>
+     </table>
+
     </div>
     
-    <div class="span6 well prettyprint linenums" style="margin-bottom: 18px; min-height:250px;">
+    <div class="span6 well prettyprint linenums" style="margin-bottom: 18px; min-height:285px;" id="divRicerca">
 	<i class="icon-search"></i>
 	<span class="spacer"><strong>Ricerca annunci</strong></span>
 	<hr/>
-	<div>
-		<div class="input-append date spacer" id="dp3" data-date="<g:formatDate format="dd-MM-yyyy" date="${new Date()}"/>" data-date-format="dd-mm-yyyy">
-		  	<input class="span2" size="16" type="text" value="">
-		 	 <span class="add-on"><i class="icon-th"></i></span>
+	<div class="form-vertical" >
+	<div class="input-append date mtop10 spacer2" id="dp" data-date="<g:formatDate format="dd-MM-yyyy" date="${new Date()}"/>" data-date-format="dd-mm-yyyy">
+			<label for="dataDa">Da data inserimento:</label>
+			 <span class="add-on"><i class="icon-th"></i></span>
+		  	<input class="span6" size="16" type="text" id="dataDa" value="">
+		 	
 		</div>
-    </div>
+		<div class="input-append date mtop10 spacer2" id="dp2" data-date="<g:formatDate format="dd-MM-yyyy" date="${new Date()}"/>" data-date-format="dd-mm-yyyy">
+			<label for="dataDa">a data inserimento:</label>
+			<span class="add-on"><i class="icon-th"></i></span>
+		  	<input class="span6" size="16" type="text" id="dataA" value="">
+		 	
+		</div>
+		<div class="input-append mtop10 spacer2">
+			<label for="prezzo">Prezzo:</label>
+			<span class="add-on">€</span>
+		  	<input class="span6" size="10" type="text" id="prezzoRicerca" value="">
+		 	 <span class="add-on">.00</span>
+		</div>
+		<div class="input-append mtop10 spacer2" >
+			<label for="telefono">Numero di telefono:</label>
+			<span class="add-on"><i class="icon-book"></i></span>
+			<input class="span6" size="16" type="text" id="telefonoRicerca" value="">
+		 	 <span class="add-on"><i class="icon-signal"></i></span>
+		</div>
+		<div class="input-append mtop10 spacer2" >
+			<label for="telefono">Zona:</label>
+			<span class="add-on"><i class="icon-globe"></i></span>
+			<input class="span6" size="16" type="text" id="zonaRicerca" value="">
+			<a class="btn btn-success" id="ricercaStart"><i class="icon-ok icon-white"></i> Ricerca</a>
+		 	 
+		</div>
+    </div>    
     </div>
     
 <%--    <div class="span4 well prettyprint linenums" style="margin-bottom: 18px; min-height:250px;">--%>
@@ -125,6 +192,7 @@
     <script src="../js/bootstrap-carousel.js"></script>
     <script src="../js/bootstrap-typeahead.js"></script>
     <script src="../js/bootstrap-datepicker.js"></script>
+    <script src="../js/alpha/myButton.js"></script>
     <script src="../js/alpha/menuFunction.js"></script>
     <script src="../js/alpha/routerData.js"></script>
     <script src="../js/alpha/main.js"></script>
