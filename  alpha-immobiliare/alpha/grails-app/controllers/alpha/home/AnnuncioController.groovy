@@ -1,5 +1,6 @@
 package alpha.home
-import alpha.gestioneAnnunci.Annuncio
+import alpha.gestioneAnnunci.*
+import alpha.security.User
 import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
 
@@ -16,7 +17,10 @@ def alphaService
 		else
 		session.rientroId = null
 		def utente = alphaService.getUtente()
-		def Annuncio nuova = new Annuncio()
+		def Annuncio nuova
+		if(!params.update)
+		nuova = new Annuncio()
+		else nuova = Annuncio.get(params.update)
 		nuova.properties=params
 		nuova.risposta = nuova.tipoRisposta."${params.risposta}"
 		nuova.utente=utente
@@ -28,7 +32,8 @@ def alphaService
 				response.sendError(500,"ko") 
 			} 	
 			else{
-				response.sendError(200,"ok") 
+				def map = [id:nuova.id]
+				render map as JSON 
 			}
 		
 	}
@@ -97,9 +102,59 @@ def alphaService
 	
 		render htmlAnn
 		}
-	def ricerca () {
+	@Secured (['ROLE_USER','ROLE_ADMIN'])
+	def pollingMiei(){
+		def utente =  alphaService.getUtente()
 		def annunci =  Annuncio.withCriteria{
-			or{
+			eq ("utente",utente)
+			order ("dataInserimento","desc")
+			maxResults 6
+		}
+		render g.render(template:"/annuncio/ultimiMieiAnnunci",collection:annunci)
+	}
+	@Secured (['ROLE_USER','ROLE_ADMIN'])
+	def getAnnuncio(){
+		def annuncio = Annuncio.get(params.id)
+		render annuncio as JSON
+	}
+	
+	@Secured (['ROLE_USER','ROLE_ADMIN'])
+	def getScheda(){
+		println "questo è "+params.id
+		def annuncio = Annuncio.get(params.id)
+		if(!annuncio.schedaAssociata)
+		annuncio.schedaAssociata = new Scheda().save(flush:true)
+		if(!annuncio.schedaAssociata.appuntamento)
+		annuncio.schedaAssociata.appuntamento = new Appuntamento().save(flush:true)
+		render g.render(template:"/annuncio/schedaAnnuncio",collection:annuncio)
+	}
+	
+	@Secured (['ROLE_USER','ROLE_ADMIN'])
+	def saveScheda(){
+		println params
+		if (params.giorno)
+		params.giorno = new Date().parse("dd-mm-yyyy", params.giorno)
+		Annuncio annuncio = Annuncio.get(params.idents)
+		annuncio.composizione = params.composizione
+		
+		annuncio.schedaAssociata.properties = params
+		annuncio.schedaAssociata.noteScheda = params.noteScheda
+		annuncio.schedaAssociata.appuntamento.properties = params 
+		if(!annuncio.save(flush:true))
+		{
+			annuncio.errors.each{
+				println it
+			}
+		}
+		response.sendError(200,"ok")
+		
+	}
+	
+	@Secured (['ROLE_USER','ROLE_ADMIN'])
+	def ricerca () {
+		User utente = alphaService.getUtente()
+		def annunci =  Annuncio.withCriteria{
+			and{
 			if(params.prezzo)
 			eq("prezzo",params.prezzo.replaceAll("\\.","").replaceAll(" ", "").toInteger())
 			if(params.telefono)
@@ -113,6 +168,10 @@ def alphaService
 			if(params.dataA)
 			lt("dataInserimento",new Date().parse("dd-MM-yyyy", params.dataA))
 			}
+			}
+			if( params.utente){
+			User ricercaU = User.findByUsername(params.utente)
+			eq ("utente",ricercaU)
 			}
 			order ("dataInserimento","desc")
 			}

@@ -6,6 +6,7 @@
 		<div class="modal-body">
 		<div class="row-fluid">
 		<div class="span12">
+		<input type="hidden" id="annuncioIdent" value="">
 		<form class="well clearfix" id="saveAnnuncioForm">
 				<div class="span6">
 				
@@ -58,7 +59,7 @@
 						<span class="help-block myGreen">Il campo non è obbligatorio</span>
 						
 						<label><strong>Scheda Associata:</strong></label>
-						<a class="btn btn-info" href="#" id="creaScheda">Crea Scheda</a>
+						<a class="btn btn-info" href="#" id="creaScheda">Apri Scheda</a>
 						
 						
 							
@@ -69,7 +70,7 @@
 		</div>
 		</div>
 		<div class="modal-footer">
-		  <a href="#" class="btn" data-dismiss="modal">Chiudi</a>
+		  <a href="#" class="btn" id="chiudiModalAnnuncio" data-dismiss="modal">Chiudi</a>
 		  <a href="#" id="saveAnnuncio" class="btn btn-primary">Salva Annuncio</a>
 		</div>
 	  </div>

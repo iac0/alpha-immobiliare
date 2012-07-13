@@ -2,7 +2,7 @@
 <html lang="it">
   <head>
     <meta charset="utf-8">
-    <title>Alfa Immobiliare</title>
+    <title>Alpha Immobiliare</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -28,7 +28,7 @@
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="../ico/favicon.ico">
+    <link rel="shortcut icon" href="../ico/logo_big.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../ico/apple-touch-icon-72-precomposed.png">
@@ -45,16 +45,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Agenzia Imm. Alpha</a>
+          <a class="brand" href="#">Alpha Gestionale</a>
           <div class="btn-group pull-right">
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
               <i class="icon-user"></i> <sec:username/>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Profile</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Sign Out</a></li>
+              <li><a href="http://10.38.76.149:8080/alpha/logout/index">Sign Out</a></li>
             </ul>
           </div>
           <g:menu attiva="0"/>
@@ -62,13 +60,13 @@
       </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="principale">
       <div class="row-fluid">
         <div class="span12">
           <div class="">
   			 <h2>Ultimi Annunci Inseriti: <small>Ordinati per data</small></h2>
   			 <i class="icon-list-alt"></i> 
-  			 <div id="ultimiInseriti" style="max-height:200px;overflow:auto">
+  			 <div id="ultimiInseriti" >
   			 <g:render template="/Menu/tabellaAnnunci" />
   			  </div>
   		  </div>	
@@ -77,7 +75,7 @@
         </div><!--/span-->
       </div><!--/row-->
 <div class="row-fluid">
-    <div class="span6 well prettyprint linenums" id="mieiUltimi" style="margin-bottom: 18px; height:349px;">
+    <div class="span6 well prettyprint linenums" id="mieiUltimi" style="margin-bottom: 18px; height:405px;">
 	<i class="icon-user"></i>
 	<span class="spacer"><strong>I tuoi ultimi annunci</strong></span>
 	<hr/>
@@ -92,13 +90,13 @@
             <th></th>
           </tr>
         </thead>
-         <tbody>
+         <tbody id="mieiUltimiData">
          	${mieiUltimi}
           </tbody>
      </table>
 
     </div>
-    <div class="span11 well prettyprint linenums" id="risultatiRicerca" style="margin-bottom: 18px; height:349px; overflow:auto;display:none;">
+    <div class="span11 well prettyprint linenums" id="risultatiRicerca" style="margin-bottom: 18px; display:none;">
 	<i class="icon-user"></i>
 	<span class="spacer "><strong>Risutati della ricerca </strong><span class="btn btn-success floatr" id="ricercaOk"><i class="icon-arrow-left icon-white"></i> Torna ai miei Annunci</span></span>
 	<hr/>
@@ -109,7 +107,7 @@
             <th>Utente</th>
             <th>Telefono</th>
             <th>Prezzo</th>
-            <th>Riposta</th>
+            <th>Risposta</th>
             <th>Zona</th>
             <th>Data</th>
             <th></th>
@@ -155,6 +153,13 @@
 			<label for="telefono">Zona:</label>
 			<span class="add-on"><i class="icon-globe"></i></span>
 			<input class="span6" size="16" type="text" id="zonaRicerca" value="">
+			
+		 	 
+		</div>
+		<div class="input-append mtop10 spacer2" >
+			<label for="telefono">Utente:</label>
+			<span class="add-on"><i class="icon-user"></i></span>
+			<input class="span6" size="16" type="text" id="utenteRicerca" value="">
 			<a class="btn btn-success" id="ricercaStart"><i class="icon-ok icon-white"></i> Ricerca</a>
 		 	 
 		</div>

@@ -4,7 +4,7 @@
             <th>Utente</th>
             <th>Telefono</th>
             <th>Prezzo</th>
-            <th>Riposta</th>
+            <th>Risposta</th>
             <th>Zona</th>
             <th>Data</th>
           </tr>
