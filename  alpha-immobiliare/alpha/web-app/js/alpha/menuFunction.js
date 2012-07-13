@@ -46,16 +46,18 @@ function loadInserisciAnnuncio(){
 	
 	$('#creaScheda').popover(
 			{
-				title:"Creazione scheda",
-				content:"Puoi creare la scheda ora o in un altro momento.<br>" +
-						"Se crei la scheda ora,l'annuncio sar&agrave; automaticamente salvato"
+				title:"Apri scheda",
+				content:"Puoi aprire la scheda ora o in un altro momento.<br>" +
+						"Se apri la scheda le informazioni da te inserite relative all'annuncio saranno automaticamente salvate"
 			});
+	
 	
 	$("#saveAnnuncio").click(function(){
 		$salvaB = $(this);
 		$salvaB.hide();
 		$.post("/alpha/annuncio/saveAnnuncio",
 				{
+				update:$("#annuncioIdent").val(),
 				telefono:$("#telefonoA").val(),
 				prezzo:$("#prezzo").val(),
 				risposta:$("#risposta").val(),
@@ -67,7 +69,7 @@ function loadInserisciAnnuncio(){
 				},
 				
 				function(data){
-					
+					$("#annuncioIdent").val(data.id);
 				})
 		.success(function(){
 			salvataggioAnnuncioOk("#saveAnnuncioForm");
@@ -136,15 +138,19 @@ function loadInserisciAnnuncio(){
 	$("#InserisciAnnuncio").on("show",function(){
 		$("#saveAnnuncioForm").find("input,label,span,a,select,textarea").hide()
 		$("#telefonoA").parent().find("*").show();
+		$(".toClose").remove();
 		
 	});
 	
 	$("#InserisciAnnuncio").on("hidden",function(){	
+		pollingMiei();
 		$(".toClose").remove();
 		$("#saveAnnuncio").show();
 		$("#saveAnnuncioForm input").val("");
 		$("#verificaNumero").removeClass("btn-success btn-danger").addClass("btn-warning");
+		
 	});
+	funzionalitaMenuTendina();
 };
 
 function getRientroAnnuncio(){
@@ -242,4 +248,51 @@ function salvataggioUtenteKo(formId){
 		$("#InserisciNuovoUente .modal-body").scrollTop(1000);
 	});	
 	
+};
+
+function salvataggioSchedaOk(formId){
+	var tooltip= '<div class="alert alert-success destroyed">Scheda modificata con successo.</div>';
+	$(tooltip).appendTo($(formId)).hide().show("blind",function(){
+		
+	});	
+	
+};
+
+function funzionalitaMenuTendina(){
+	$(".eliminaAnnuncio").click(function(){
+		alert("elimina");
+	});
+	$(".modificaAnnuncio").click(function(){
+		var myId = $(this).parent().parent().find("button").attr("idAnnuncio");
+		$("#annuncioIdent").val(myId);
+		caricaInserisciAnnuncio();
+	});
+	$(".segnaAgenziaAnnuncio").click(function(){
+		alert("segnaAAgenzia");
+	});
+	
+
+};
+
+function caricaInserisciAnnuncio(){
+	$.post("/alpha/annuncio/getAnnuncio",
+			{
+			id: $("#annuncioIdent").val()
+			},
+			function(data){
+			$("#telefonoA").val(data.telefono);
+			$("#risposta").val(data.risposta);
+			$("#composizione").val(data.composizione);
+			$("#indirizzo").val(data.indirizzo);
+			$("#noteA").val(data.note);
+			$("#prezzo").val(data.prezzo);
+			$("#zona").val(data.zona);
+			$("#metriQuadrati").val(data.metriQuadrati);
+			showInserisciAnnuncio();
+			});
+};	
+
+function showInserisciAnnuncio(){
+	$("#InserisciAnnuncio").modal("show");
+	$("#verificaNumero").trigger("click");
 };

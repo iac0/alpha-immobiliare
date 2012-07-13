@@ -13,8 +13,10 @@ function caricaUltimiAnnunci(ultimoCaricato){
 			    		 poll();
 			    	 }
 		      });
-		  }, 60000);
+		  }, 5000);
 		})();
+	
+	
 };
 
 function startRicerca(){
@@ -24,10 +26,22 @@ function startRicerca(){
 				zona:$("#zonaRicerca").val(),
 				prezzo:$("#prezzoRicerca").val(),
 				dataDa:$("#dataDa").val(),
-				dataA:$("#dataA").val()
+				dataA:$("#dataA").val(),
+				utente:$("#utenteRicerca").val()
 			},
 			function(data){
 				$("#risultatoRicerca").html(data);
+				funzionalitaMenuTendina();
 			});
 	
 };
+
+function pollingMiei(){
+    $.ajax({
+  	 url: "/alpha/annuncio/pollingMiei",
+  	   	 success: function(data){
+  	    $("#mieiUltimiData").html(data);
+  		funzionalitaMenuTendina();
+  	 }
+});
+}
