@@ -96,3 +96,4 @@ log4j = {
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'alpha.security.User'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'alpha.security.UserRole'
 grails.plugins.springsecurity.authority.className = 'alpha.security.Role'
+grails.plugins.springsecurity.logout.afterLogoutUrl ="/entryPoint/index"
