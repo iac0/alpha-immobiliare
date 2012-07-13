@@ -1,4 +1,4 @@
-<tr id="${annuncio.id}">
+<tr >
 <td>
 
 
@@ -9,12 +9,12 @@
 <td><g:formatDate date="${annuncio.dataInserimento}" type="date" style="LONG" /></td>
 <td>
 <div class="btn-group">
-          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><i class="icon-pencil icon-white"></i> Azioni <span class="caret"></span></button>
+          <button idAnnuncio="${annuncio.id}" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><i class="icon-pencil icon-white"></i> Azioni <span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <li><a href="#"><i class="icon-trash"></i> Elimina</a></li>
-            <li><a href="#"><i class="icon-wrench"></i> Modifica</a></li>
+            <li class="eliminaAnnuncio"><a><i class="icon-trash"></i> Elimina</a></li>
+            <li class="modificaAnnuncio"><a><i class="icon-wrench"></i> Modifica</a></li>
             <li class="divider"></li>
-            <li><a href="#"><i class="icon-briefcase"></i> Segna come Agenzia</a></li>
+            <li class="segnaAgenziaAnnuncio"><a><i class="icon-briefcase"></i> Segna come Agenzia</a></li>
           </ul>
         </div>
 </td>
