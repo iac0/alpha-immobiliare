@@ -21,8 +21,8 @@ class BootStrap {
 		if (!admin)
 		{
 			admin = new User()    /*richiamo costruttore inserito precedentemente*/
-			admin.username="iaco"
-			admin.password="iaco"
+			admin.username="luca"
+			admin.password="forzaroma"
 			admin.email='giuseppe.iacobucci@finsa.it'
 			admin.enabled=true
 			admin.save(flush:true)
