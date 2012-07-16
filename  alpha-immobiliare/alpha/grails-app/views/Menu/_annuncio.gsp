@@ -1,3 +1,4 @@
+<%@ page import="alpha.anagrafica.Zona" %>   
 <div class="modal fade" id="InserisciAnnuncio" style="display: none;">
 				<div class="modal-header">
 				<button class="close" data-dismiss="modal">x</button>
@@ -48,10 +49,46 @@
 						<span class="help-block myRed">Il campo è obbligatorio</span>
 						
 						<label><strong>Zona:</strong></label>
-						<select id="zona">
-						  <option value="zona1">Parioli</option>
-						  <option value="zona2">Trastevere</option>
-						</select>
+
+<select id="zona">
+<option value="Affitti" >Affitti</option>
+<option value="Appio Claudio Appia - Pignatelli" >Appio Claudio Appia - Pignatelli</option>
+<option value="Appio Latino" >Appio Latino</option>
+<option value="Aurelio - Boccea" >Aurelio - Boccea</option>
+<option value="Aventino - San Saba" >Aventino - San Saba</option>
+<option value="Balduina - Montemario" >Balduina - Montemario</option>
+<option value="Bologna - Nomentana" >Bologna - Nomentana</option>
+<option value="Bravetta - Casetta Mattei" >Bravetta - Casetta Mattei</option>
+<option value="Casilino - Prenestino" >Casilino - Prenestino</option>
+<option value="Cassia - Olgiata" >Cassia - Olgiata</option>
+<option value="Centro Storico" selected="selected">Centro Storico</option>
+<option value="Colombo - Ardeatino" >Colombo - Ardeatino</option>
+<option value="Don Bosco - Cinecitta" >Don Bosco - Cinecitta</option>
+<option value="Esquilino - San Lorenzo" >Esquilino - San Lorenzo</option>
+<option value="Eur" >Eur</option>
+<option value="Flaminio Vigna - Clara" >Flaminio Vigna - Clara</option>
+<option value="Gregorio VII - B. Ubaldi" >Gregorio VII - B. Ubaldi</option>
+<option value="Laurentino - Montagnola" >Laurentino - Montagnola</option>
+<option value="Marconi - Ostiense" >Marconi - Ostiense</option>
+<option value="Montesacro - Talenti" >Montesacro - Talenti</option>
+<option value="Monteverde - Gianicolense" >Monteverde - Gianicolense</option>
+<option value="Ostia - Fiumicino" >Ostia - Fiumicino</option>
+<option value="Palocco - Acilia" >Palocco - Acilia</option>
+<option value="Parioli - Pinciano" >Parioli - Pinciano</option>
+<option value="Portuense - Magliana" >Portuense - Magliana</option>
+<option value="Prati - Clodio" >Prati - Clodio</option>
+<option value="Prati Fiscali - Nuovo Salario" >Prati Fiscali - Nuovo Salario</option>
+<option value="Salario - Trieste" >Salario - Trieste</option>
+<option value="San Giovanni - Appia Nuova" >San Giovanni - Appia Nuova</option>
+<option value="Tiburtino - Collatino" >Tiburtino - Collatino</option>
+<option value="Torre Vecchia - Sacchetti" >Torre Vecchia - Sacchetti</option>
+<option value="Trastevere - Borgo" >Trastevere - Borgo</option>
+<option value="Trionfale" >Trionfale</option>
+<option value="Tuscolano" >Tuscolano</option>
+</select>
+<%----%>
+<%--<g:set var="zona" value="${Zona.listOrderByZona(order:"asc")}"></g:set>--%>
+<%--<g:select name="zona" id="zona" from="${zona.zona}" value="${zona.zona}" multiple="false"/>--%>
 						<span class="help-block myRed">Il campo è obbligatorio</span>		
 						
 						<label><strong>Metri Quadrati:</strong></label>
