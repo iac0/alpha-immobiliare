@@ -122,17 +122,23 @@ function loadInserisciAnnuncio(){
 				{
 				numero:$("#telefonoA").val()
 				},
-				function(data){})
-			.success(function(){
-				$("#verificaNumero").removeClass("btn-warning").addClass("btn-success");
-				$("#saveAnnuncioForm").find("input,label,span,a,select,textarea").show();
-			})
-			.error(function(){
-				$("#verificaNumero").removeClass("btn-warning").addClass("btn-danger");
-				$("#verificaNumero").tooltip('show');
-				setTimeout("$('#verificaNumero').tooltip('hide')",2500);
-				
-			});
+				function(data){
+					if(data.annuncio==true)
+					{
+					alert('Attenzione Scheda presente!');
+					}
+					if(data.agenzia==true){
+						$("#verificaNumero").removeClass("btn-warning").addClass("btn-danger");
+						$("#verificaNumero").tooltip('show');
+						setTimeout("$('#verificaNumero').tooltip('hide')",2500);
+					}
+					else {
+						if(data.agenzia==false && data.annuncio==false){
+						$("#verificaNumero").removeClass("btn-warning").addClass("btn-success");
+						$("#saveAnnuncioForm").find("input,label,span,a,select,textarea").show();
+						}
+					}
+					});
 	});
 	
 	$("#InserisciAnnuncio").on("show",function(){
@@ -294,5 +300,6 @@ function caricaInserisciAnnuncio(){
 
 function showInserisciAnnuncio(){
 	$("#InserisciAnnuncio").modal("show");
-	$("#verificaNumero").trigger("click");
+	$("#verificaNumero").removeClass("btn-warning").addClass("btn-success");
+	$("#saveAnnuncioForm").find("input,label,span,a,select,textarea").show();
 };
