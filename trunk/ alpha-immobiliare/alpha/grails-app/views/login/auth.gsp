@@ -5,6 +5,7 @@
     <title>Login, Alpha Immobiliare</title>
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="shortcut icon" href="../ico/logo_big.ico">
 
     <!-- Le styles -->
     <link href="../css/bootstrap.css" rel="stylesheet">

@@ -17,7 +17,7 @@ class Annuncio {
 	Date dataUltimoInserimento = new Date()
 	
     static constraints = {
-		telefono unique:['telefono','prezzo'],maxSize:12 
+		telefono unique:['telefono'],maxSize:12 
 		zona maxSize:100
 		risposta maxSize: 8
 		schedaAssociata nullable:true

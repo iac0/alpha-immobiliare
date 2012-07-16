@@ -11,7 +11,7 @@ def alphaService
     def saveAnnuncio() {
 		println params
 		params.telefono = params.telefono.replaceAll(" ","").replaceAll("/+39", "")
-		def violated = Annuncio.findByTelefonoAndPrezzo(params.telefono,params.prezzo.toInteger())
+		def violated = Annuncio.findByTelefono(params.telefono)
 		if(violated)
 		session.rientroId = violated.id
 		else
