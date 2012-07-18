@@ -39,7 +39,7 @@ def alphaService
 		map.agenzia = false
 		if(annuncio){
 		map.annuncio = true
-		map.idAnnuncio=annuncio.id
+		map.ann=annuncio
 		}
 		else 
 		map.annuncio = false

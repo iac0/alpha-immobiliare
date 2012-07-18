@@ -139,7 +139,8 @@ function loadInserisciAnnuncio(){
 				function(data){
 					if(data.annuncio==true)
 					{
-					$("#annuncioIdent").val(data.idAnnuncio);
+					$("#annuncioIdent").val(data.ann.id);
+					annuncioPresente(data.ann.utente.username);
 					caricaInserisciAnnuncio();
 					}
 					if(data.agenzia==true){
@@ -285,6 +286,16 @@ function operazioneOk(formId){
 		
 	});	
 	
+};
+
+function annuncioPresente(utente){
+	var tooltip= '<div class="alert alert-danger destroyed">'+
+		'Attenzione questo annuncio &egrave; gi&agrave; stato inserito dall\'utente <strong>'+utente+
+		'</strong><br>Se la riposta dell\'annuncio &agrave; <strong>SI</strong> contatta '+utente+
+		'. Se Apri la scheda o effettuiti modifiche diventerai il proprietario dell\'annunio.'+
+		'</div>';
+	$to = $("#saveAnnuncioForm").parent();
+	$(tooltip).prependTo($to).hide().show("blind");
 };
 
 function funzionalitaMenuTendina(){
