@@ -106,7 +106,21 @@ function loadInserisciAnnuncio(){
 	   
 	});
 	
-	$("#prezzo,#telefonoA").keyup(function () { 
+	$("#telefonoA").keydown(function () {
+		if($(this).next().hasClass("btn-danger"))
+		{	
+			$(this).val("");
+			$(this).next().removeClass("btn-danger").addClass("btn-warning");
+			
+		}
+	   
+	});
+	
+	$("#prezzo,#telefonoA").keyup(function () {
+		
+		if(event.keyCode == 13){
+		$("#verificaNumero").trigger("click");
+		}
 	    this.value = this.value.replace(/[^0-9\.]/g,'');
 	});
 	
@@ -125,7 +139,8 @@ function loadInserisciAnnuncio(){
 				function(data){
 					if(data.annuncio==true)
 					{
-					alert('Attenzione Scheda presente!');
+					$("#annuncioIdent").val(data.idAnnuncio);
+					caricaInserisciAnnuncio();
 					}
 					if(data.agenzia==true){
 						$("#verificaNumero").removeClass("btn-warning").addClass("btn-danger");
@@ -153,6 +168,7 @@ function loadInserisciAnnuncio(){
 		$(".toClose").remove();
 		$("#saveAnnuncio").show();
 		$("#saveAnnuncioForm input").val("");
+		$("#annuncioIdent").val("");
 		$("#verificaNumero").removeClass("btn-success btn-danger").addClass("btn-warning");
 		
 	});
@@ -263,10 +279,19 @@ function salvataggioSchedaOk(formId){
 	});	
 	
 };
+function operazioneOk(formId){
+	var tooltip= '<div class="alert alert-success destroyed">Operazione effettuata con successo.</div>';
+	$(tooltip).appendTo($(formId)).hide().show("blind",function(){
+		
+	});	
+	
+};
 
 function funzionalitaMenuTendina(){
 	$(".eliminaAnnuncio").click(function(){
-		alert("elimina");
+		var myId = $(this).parent().parent().find("button").attr("idAnnuncio");
+		$("#eliminaAnnuncioQ").attr("idAnnuncio",myId);
+		$("#EliminaAnnuncio").modal("show");
 	});
 	$(".modificaAnnuncio").click(function(){
 		var myId = $(this).parent().parent().find("button").attr("idAnnuncio");
@@ -274,7 +299,9 @@ function funzionalitaMenuTendina(){
 		caricaInserisciAnnuncio();
 	});
 	$(".segnaAgenziaAnnuncio").click(function(){
-		alert("segnaAAgenzia");
+		var myId = $(this).parent().parent().find("button").attr("idAnnuncio");
+		$("#segnaComeAgenziaQ").attr("idAnnuncio",myId);
+		$("#SegnaComeAgenzia").modal("show");
 	});
 	
 

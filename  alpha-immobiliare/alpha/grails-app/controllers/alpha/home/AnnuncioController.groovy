@@ -1,5 +1,6 @@
 package alpha.home
 import alpha.gestioneAnnunci.*
+import alpha.anagrafica.Agenzia
 import alpha.security.User
 import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
@@ -183,4 +184,39 @@ def alphaService
 	
 		render htmlAnn
 		}
+	
+	@Secured (['ROLE_USER','ROLE_ADMIN'])
+	def elimina(){
+		def result = [:]
+		result.success = false
+		Annuncio elimina = Annuncio.get(params.ident)
+		if(elimina)
+		{
+			elimina.delete(flush:true)
+			result.success = true
+		}
+		render result as JSON
+	}
+	
+	@Secured (['ROLE_USER','ROLE_ADMIN'])
+	def segnaComeAgenzia(){
+		def result = [:]
+		result.success = true
+		Annuncio elimina = Annuncio.get(params.ident)
+		if (elimina){
+			Agenzia agenzia  = new Agenzia()
+			agenzia.telefono = elimina.telefono
+			agenzia.utente= alphaService.getUtente()
+			if(!agenzia.save(flush:true)){
+				
+				result.success = false
+				
+			}
+			elimina.delete(flush:true)
+			
+			
+		}
+		render result as JSON
+		
+	}
 }

@@ -7,12 +7,13 @@
 		<div class="modal-body">
 		<div class="row-fluid">
 		<div class="span12">
-		
+		Sei sicuro di voler eliminare il seguente annuncio?
 		</div>
 		</div>
 		</div>
 		<div class="modal-footer">
 		  <a href="#" class="btn" data-dismiss="modal">Chiudi</a>
-		  <a href="#" id="saveUtente" class="btn btn-primary">Salva Utente</a>
+		  <a href="#" id="eliminaAnnuncioQ" idAnnuncio="" class="btn btn-danger">
+		  <i class="icon-trash icon-white"></i> Elimina</a>
 		</div>
 	  </div>
