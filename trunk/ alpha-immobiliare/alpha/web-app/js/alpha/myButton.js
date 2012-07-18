@@ -38,7 +38,30 @@ $(document).ready(function(){
 		
 	});
 	
-
+		$("#eliminaAnnuncioQ").click(function(){
+			$.post("/alpha/annuncio/elimina",
+					{
+					ident: $(this).attr("idAnnuncio")
+					},
+					function(data){
+						if(data.success){
+						 operazioneOk("#EliminaAnnuncio div.span12");
+						pollingMiei();
+						}
+					});
+		});
+		$("#segnaComeAgenziaQ").click(function(){
+			$.post("/alpha/annuncio/segnaComeAgenzia",
+					{
+					ident: $(this).attr("idAnnuncio")
+					},
+					function(data){
+						if(data.success){
+						operazioneOk("#SegnaComeAgenzia div.span12");
+						pollingMiei();
+						}
+					});
+		});
 });
 
 

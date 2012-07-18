@@ -242,4 +242,6 @@
   	<g:render template="/Menu/agenzia" />
   	<g:render template="/Menu/annuncio" />
   	<g:render template="/Menu/utente" />
+  	<g:render template="/Menu/eliminaAnnuncio" />
+  	<g:render template="/Menu/segnaComeAgenzia" />
 </html>

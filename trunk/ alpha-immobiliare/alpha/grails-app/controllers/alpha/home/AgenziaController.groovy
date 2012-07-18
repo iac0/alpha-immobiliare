@@ -37,8 +37,10 @@ def alphaService
 		map.agenzia=true
 		else 
 		map.agenzia = false
-		if(annuncio)
+		if(annuncio){
 		map.annuncio = true
+		map.idAnnuncio=annuncio.id
+		}
 		else 
 		map.annuncio = false
 		render map as JSON
