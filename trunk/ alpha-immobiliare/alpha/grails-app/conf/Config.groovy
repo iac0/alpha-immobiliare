@@ -92,6 +92,18 @@ log4j = {
            'net.sf.ehcache.hibernate'
 }
 
+grails {
+	mail {
+	  host = "smtp.gmail.com"
+	  port = 465
+	  username = "alphaimmobiliare@gmail.com"
+	  password = "alpha2012"
+	  props = ["mail.smtp.auth":"true",
+			   "mail.smtp.socketFactory.port":"465",
+			   "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+			   "mail.smtp.socketFactory.fallback":"false"]
+	}
+ }
 // Added by the Spring Security Core plugin:
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'alpha.security.User'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'alpha.security.UserRole'

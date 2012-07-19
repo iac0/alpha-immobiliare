@@ -36,7 +36,7 @@
   </head>
 
   <body>
-
+	<input type="hidden" id="mailIdent"/>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -247,5 +247,31 @@
   	<g:render template="/Menu/utente" />
   	<g:render template="/Menu/eliminaAnnuncio" />
   	<g:render template="/Menu/segnaComeAgenzia" />
+  	
+<div class="modal fade" id="InviaMessaggioUtente" style="display:none;">
+				<div class="modal-header">
+				<button class="close" data-dismiss="modal">x</button>
+				<h3>Invia Messaggio</h3>
+		</div>
+		<div class="modal-body">
+		<div class="row-fluid">
+		<div class="span12">
+		<form class="well clearfix">
+				<div class="span6">
+				<label><strong>Messaggio da inviare:</strong></label>
+				<textarea class="input-xlarge" id="messaggioEmail" placeholder="Scrivi il messaggio..."></textarea>
+
+							
+				</div>
+		
+		</form>
+		</div>
+		</div>
+		</div>
+		<div class="modal-footer">
+		  <a href="#" class="btn" data-dismiss="modal">Chiudi</a>
+		  <a href="#" id="invioEmail" class="btn btn-primary">Invia Messaggio</a>
+		</div>
+	  </div>
   
 </html>

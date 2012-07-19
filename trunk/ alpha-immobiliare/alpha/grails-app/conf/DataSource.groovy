@@ -28,7 +28,7 @@ environments {
 	  production {
 		    dataSource {
 			      dbCreate = "update"
-			      url = "jdbc:mysql://localhost:3306/alpha_production"
+			      url = "jdbc:mysql://localhost:3306/alpha"
 		    }
 	  }
 }
