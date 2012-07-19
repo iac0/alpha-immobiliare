@@ -1,5 +1,16 @@
 
 $(document).ready(function(){
+	$("#invioEmail").click(function(){
+		$.post("/alpha/agenzia/avvisa",
+				{
+					ident:$("#mailIdent").val(),
+					messaggio:$("#messaggioEmail").val()
+				},
+				function(data){
+					$("#InviaMessaggioUtente").modal("hide");
+				});
+	});		
+	
 	$("#ricercaStart").click(function(){
 		startRicerca();
 		$("#mieiUltimi").hide("slide",function(){
@@ -62,6 +73,7 @@ $(document).ready(function(){
 						}
 					});
 		});
+		
 });
 
 
@@ -127,6 +139,7 @@ function saveScheda(){
 			
 		});
 	});
+	
 	
 	
 	

@@ -30,6 +30,7 @@ function loadInserisciAgenzia(){
 		$("#saveAgenzia").show();
 		$("#saveAgenzia").removeClass("disabled");
 		$(".toClose").remove();
+		
 		});
 };
 function loadInserisciAnnuncio(){
@@ -139,8 +140,9 @@ function loadInserisciAnnuncio(){
 				function(data){
 					if(data.annuncio==true)
 					{
-					$("#annuncioIdent").val(data.ann.id);
-					annuncioPresente(data.ann.utente.username);
+					$("#annuncioIdent").val(data.idAnn);
+					$("#mailIdent").val(data.idAnn);
+					annuncioPresente(data.utente);
 					caricaInserisciAnnuncio();
 					}
 					if(data.agenzia==true){
@@ -172,6 +174,7 @@ function loadInserisciAnnuncio(){
 	$("#InserisciAnnuncio").on("hidden",function(){	
 		pollingMiei();
 		$(".toClose").remove();
+		$("#toRemove").remove();
 		$("#saveAnnuncio").show();
 		$("#saveAnnuncioForm input").val("");
 		$("#annuncioIdent").val("");
@@ -294,11 +297,11 @@ function operazioneOk(formId){
 };
 
 function annuncioPresente(utente){
-	var tooltip= '<div class="alert alert-danger destroyed">'+
+	var tooltip= '<div class="alert alert-danger" id="toRemove">'+
 		'Attenzione questo annuncio &egrave; gi&agrave; stato inserito dall\'utente <strong>'+utente+
 		'</strong><br>Se la riposta dell\'annuncio &agrave; <strong>SI</strong> contatta '+utente+
-		'. Se Apri la scheda o effettuiti modifiche diventerai il proprietario dell\'annunio.'+
-		'</div>';
+		'. Se Apri la scheda o effettuiti modifiche diventerai il proprietario dell\'annuncio.<br><br>'+
+		'<span class="btn btn-warning" id="sendMail" data-toggle="modal" href="#InviaMessaggioUtente" data-dismiss="modal"> Invia Messaggio a '+utente+'</span></div>';
 	$to = $("#saveAnnuncioForm").parent();
 	$(tooltip).prependTo($to).hide().show("blind");
 };
@@ -356,3 +359,4 @@ function playSound() {
 	var audio = document.getElementsByTagName("audio")[0];
 	audio.play();
 	 }
+
