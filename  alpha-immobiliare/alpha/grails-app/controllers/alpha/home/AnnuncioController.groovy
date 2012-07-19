@@ -19,8 +19,10 @@ def alphaService
 		session.rientroId = null
 		def utente = alphaService.getUtente()
 		def Annuncio nuova
-		if(!params.update)
+		if(!params.update){
 		nuova = new Annuncio()
+		
+		}
 		else nuova = Annuncio.get(params.update)
 		nuova.properties=params
 		nuova.risposta = nuova.tipoRisposta."${params.risposta}"

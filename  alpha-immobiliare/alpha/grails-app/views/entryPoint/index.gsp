@@ -237,6 +237,9 @@
     <script src="../js/alpha/menuFunction.js"></script>
     <script src="../js/alpha/routerData.js"></script>
     <script src="../js/alpha/main.js"></script>
+    <audio controls preload="auto">
+	<source src="${resource(dir:'sound/',file:'error.wav') }" controls></source>
+	</audio>
 	
   </body>
   	<g:render template="/Menu/agenzia" />
@@ -244,4 +247,5 @@
   	<g:render template="/Menu/utente" />
   	<g:render template="/Menu/eliminaAnnuncio" />
   	<g:render template="/Menu/segnaComeAgenzia" />
+  
 </html>

@@ -146,6 +146,11 @@ function loadInserisciAnnuncio(){
 					if(data.agenzia==true){
 						$("#verificaNumero").removeClass("btn-warning").addClass("btn-danger");
 						$("#verificaNumero").tooltip('show');
+						playSound();
+						
+						
+						
+						
 						setTimeout("$('#verificaNumero').tooltip('hide')",2500);
 					}
 					else {
@@ -341,3 +346,13 @@ function showInserisciAnnuncio(){
 	$("#verificaNumero").removeClass("btn-warning").addClass("btn-success");
 	$("#saveAnnuncioForm").find("input,label,span,a,select,textarea").show();
 };
+
+function playSound() {
+	$("audio").remove();
+	var lol = '<audio controls="" preload="auto">'+
+	'<source src="/alpha/static/sound/error.wav" controls="">'+
+	'</audio>';
+	$(lol).appendTo("body");
+	var audio = document.getElementsByTagName("audio")[0];
+	audio.play();
+	 }
