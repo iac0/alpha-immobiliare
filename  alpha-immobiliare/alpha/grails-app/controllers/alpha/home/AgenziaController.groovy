@@ -52,19 +52,19 @@ def alphaService
 		Annuncio annuncio = Annuncio.get(params.ident)
 		def destinatario = annuncio.utente
 		def corpo = """
-			Ciao ${destinatario.username}, l'utente ${utente.username} vuole maggiori informazioni <br>
+			Ciao ${destinatario.username}, l'utente <b>${utente.username}</b> vuole maggiori informazioni <br>
 			sull'annuncio:<br>
 			Telefono:${annuncio.telefono}
 			Zona:${annuncio.zona}
 			Risposta:${annuncio.risposta}
 			<br><br>
-			${params.messaggio!=''?'Inoltre ti ha inviato il seguente messaggio<br>'+params.messaggio:''}
+			${params.messaggio!=''?'Inoltre ti ha inviato il seguente messaggio:<br>'+params.messaggio:''}
 			
 		"""
 		Thread.start{
 			sendMail {
-			to "${destinatario.email}"
-			from "${utente.email}"
+			to destinatario.email
+			from utente.email
 //			cc "marge@g2one.com", "ed@g2one.com"
 //			bcc "joe@g2one.com"
 			subject "Informazioni Annuncio"
