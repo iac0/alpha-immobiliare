@@ -237,7 +237,7 @@
     <script src="../js/alpha/menuFunction.js"></script>
     <script src="../js/alpha/routerData.js"></script>
     <script src="../js/alpha/main.js"></script>
-    <audio controls preload="auto">
+    <audio controls preload="auto" style="display:none;">
 	<source src="${resource(dir:'sound/',file:'error.wav') }" controls></source>
 	</audio>
 	
