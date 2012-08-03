@@ -10,7 +10,7 @@ def alphaService
 		def annunci =  Annuncio.withCriteria{
 			eq ("utente",utente)
 			order ("dataInserimento","desc")
-			maxResults 10
+			maxResults 6
 		}
 		[utente:utente,mieiUltimi:g.render(template:"/annuncio/ultimiMieiAnnunci",collection:annunci)]
 		}

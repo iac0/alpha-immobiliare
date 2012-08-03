@@ -19,5 +19,37 @@ loadInserisciUtente();
 
 caricaUltimiAnnunci();	
 $("#dp,#dp2").datepicker();
+$("#ricercaNumeroAgenzia").typeahead({
+    source: function (typeahead, query) {
+        return $.post('/alpha/agenzia/autocomplete', { query: query }, function (data) {
+            return typeahead.process(data);
+        });
+    },
+    property: "name",
+    items: 14
+});
 
+$("#ricercaNomeUtente,#assegnaNomeUtente").typeahead({
+    source: function (typeahead, query) {
+        return $.post('/alpha/user/autocomplete', { username: query }, function (data) {
+            return typeahead.process(data);
+        });
+    },
+    property: "name",
+    items: 8
+});
+$('a[data-toggle="tab"]').on('shown', function (e) {
+	if($(e.target).attr("href")=="#tabEliminaUtente"){
+		$("#InserisciNuovoUtente div.modal-footer a").hide();
+		}
+	if($(e.target).attr("href")=="#eliminaAgenzia"){
+		$("#InserisciNumeroAgenzia div.modal-footer a").hide();
+		}
+	 if($(e.target).attr("href")=="#tabInserisciUtente"){
+		  $("#InserisciNuovoUtente div.modal-footer a").show();
+		 }
+	  if($(e.target).attr("href")=="#inserisciAgenzia"){
+			$("#InserisciNumeroAgenzia div.modal-footer a").show();
+			}	
+	});
 });

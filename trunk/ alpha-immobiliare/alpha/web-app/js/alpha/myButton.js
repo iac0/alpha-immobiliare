@@ -73,7 +73,51 @@ $(document).ready(function(){
 						}
 					});
 		});
-		
+		$("#cancellaInputRicercaNumeroAgenzia").click(function(){
+			$("#ricercaNumeroAgenzia").val("");
+			
+		});
+		$("#cancellaRicercaNomeUtente").click(function(){
+			$("#ricercaNomeUtente").val("");
+			
+		});
+		$("#cancellaAssegnaNomeUtente").click(function(){
+			$("#assegnaNomeUtente").val("");
+			
+		});
+		$("#eliminaNumeroAgenzia").click(function(){
+			var valore = $("#ricercaNumeroAgenzia").val();
+			$.post("/alpha/agenzia/elimina",{telefono:valore},function(data){
+				if(data.success)
+					showMessage(true,
+							'Agenzia eliminata con successo',
+							'#InserisciNumeroAgenzia');
+				else 
+					showMessage(false,
+							'Si &egrave; verificato un errore, verifica che il numero inserito sia corretto',
+							'#InserisciNumeroAgenzia');
+				
+			});
+		});
+		$("#eliminaRicercaNomeUtente").click(function(){
+			var valore = $("#ricercaNomeUtente").val();
+			var assegnaUtente= $("#assegnaNomeUtente").val();
+			if( (valore && assegnaUtente) && (valore!=assegnaUtente)){
+			$.post("/alpha/user/elimina",{username:valore,assegna:assegnaUtente},function(data){
+				if(data.success)
+					showMessage(true,
+							'Utente eliminata con successo',
+							'#InserisciNuovoUtente');
+				else 
+					showMessage(false,
+							'Si &egrave; verificato un errore, verifica che il nome inserito sia corretto',
+							'#InserisciNuovoUtente');
+				
+			});
+			}else {
+				alert('Valorizza sia l\'utente da eliminare che l\'utente a cui assegnare gli annunci! Inoltre tali valori devono essere diversi!');
+			}
+		});
 });
 
 

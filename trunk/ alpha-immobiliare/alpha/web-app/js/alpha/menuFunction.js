@@ -295,11 +295,20 @@ function operazioneOk(formId){
 	});	
 	
 };
-
+function showMessage(success, message, idHtml) {
+	var divAlert = idHtml + " div.modal-footer";
+	var typeAlert = "alert-success";
+	if (!success)
+		typeAlert = "alert-danger";
+	var alert = '<div class="alert fade timeoutClose ' + typeAlert + ' in">'
+			+ message + '</div>';
+	$(alert).prependTo(divAlert).hide().show("blind");
+	setTimeout("$('.timeoutClose').hide('blind').remove()", 2500);
+};
 function annuncioPresente(utente){
 	var tooltip= '<div class="alert alert-danger" id="toRemove">'+
 		'Attenzione questo annuncio &egrave; gi&agrave; stato inserito dall\'utente <strong>'+utente+
-		'</strong><br>Se la riposta dell\'annuncio &agrave; <strong>SI</strong> contatta '+utente+
+		'</strong><br>Se la riposta dell\'annuncio &egrave; <strong>SI</strong> contatta '+utente+
 		'. Se Apri la scheda o effettuiti modifiche diventerai il proprietario dell\'annuncio.<br><br>'+
 		'<span class="btn btn-warning" id="sendMail" data-toggle="modal" href="#InviaMessaggioUtente" data-dismiss="modal"> Invia Messaggio a '+utente+'</span></div>';
 	$to = $("#saveAnnuncioForm").parent();
