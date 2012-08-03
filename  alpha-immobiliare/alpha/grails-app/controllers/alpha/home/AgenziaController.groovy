@@ -46,7 +46,7 @@ def alphaService
 		map.annuncio = false
 		render map as JSON
 		}
-	
+	@Secured (['ROLE_USER','ROLE_ADMIN'])
 	def avvisa (){
 		def utente = alphaService.getUtente()
 		Annuncio annuncio = Annuncio.get(params.ident)
@@ -72,5 +72,24 @@ def alphaService
 		 }
 		}
 		response.sendError(200,"0k")
+	}
+	@Secured (['ROLE_USER','ROLE_ADMIN'])
+	def autocomplete() {
+		def map = Agenzia.findAllByTelefonoIlike("%${params.query}%").collect{
+			[name:it.telefono]
+		}
+		render map as JSON
+	}
+	@Secured (['ROLE_USER','ROLE_ADMIN'])
+	def elimina () {
+		def map = [:]
+		map.success  = false
+		Agenzia agenzia = Agenzia.findByTelefono(params.telefono)
+		if(agenzia){
+			agenzia.delete(flush:true)
+			map.success = true
+			
+		}
+		render map as JSON
 	}
 }

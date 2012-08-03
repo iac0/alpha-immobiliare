@@ -5,7 +5,12 @@
 				<h3>Inserisci Nuovo Utente</h3>
 		</div>
 		<div class="modal-body">
-		<div class="row-fluid">
+		<ul class="nav nav-tabs" id="myTab">
+  		<li class="active"><a href="#tabInserisciUtente" data-toggle="tab">Inserisci</a></li>
+ 		<li><a href="#tabEliminaUtente" data-toggle="tab">Elimina</a></li>
+ 		</ul>
+ 		<div class="tab-content">
+		<div class="tab-pane active row-fluid" id="tabInserisciUtente">
 		<div class="span12">
 		<form class="well clearfix" id="saveUtenteForm">
 				<div class="span6">
@@ -36,6 +41,39 @@
 							
 				</div>
 		
+		</form>
+		</div>
+		</div>
+		<div class="tab-pane" id="tabEliminaUtente">
+		<div >
+        <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Attenzione!</strong> Effettuare questa operazione con cautela e assicurarsi che:<br>
+        <ul>
+        <li> L'utente che si vuole eliminare non sia connesso</li>
+        <li> E' impossibile eliminare se stessi </li>
+        <li> Tutti gli annunci che ha inserito l'utente devono essere assegnati a qualche altro utente</li>
+        </ul>
+      </div>
+
+    </div>
+		<form class="well control-group form-horizontal">
+		<div class="control-group">
+            <label class="control-label" for="ricercaNomeUtente">Ricerca Utente</label>
+            <div class="controls">
+              <div class="input-prepend input-append">
+                <button class="btn" type="button" id="cancellaRicercaNomeUtente"><i class="icon icon-remove"></i></button><input class="span2" id="ricercaNomeUtente" size="16" type="text"><button id="eliminaRicercaNomeUtente" class="btn btn-danger" type="button">Elimina</button>
+              </div>
+            </div>
+          </div>
+        		<div class="control-group">
+            <label class="control-label" for="assegnaNomeUtente">Assegna annunci a</label>
+            <div class="controls">
+              <div class="input-prepend input-append">
+                <button class="btn" type="button" id="cancellaAssegnaNomeUtente"><i class="icon icon-remove"></i></button><input class="span2" id="assegnaNomeUtente" size="16" type="text">
+              </div>
+            </div>
+          </div>
 		</form>
 		</div>
 		</div>
