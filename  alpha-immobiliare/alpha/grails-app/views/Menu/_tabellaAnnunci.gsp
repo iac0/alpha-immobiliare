@@ -4,6 +4,7 @@
             <th>Utente</th>
             <th>Telefono</th>
             <th>Prezzo</th>
+            <th>N&deg; scheda</th>
             <th>Risposta</th>
             <th>Zona</th>
             <th>Data</th>

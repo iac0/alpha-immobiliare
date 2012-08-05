@@ -260,6 +260,10 @@ function salvataggioAnnuncioOk(formId){
 	var tooltip= '<div class="alert alert-success toClose">Annuncio salvato con successo,<br> puoi chiudere la finestra</div>';
 	$(tooltip).appendTo($(formId).parent()).hide().show("blind",function(){
 		$("#InserisciAnnuncio .modal-body").scrollTop(1000);
+		if(multiplo){
+			$("#InserisciAnnuncio").modal("hide");
+			setTimeout('$("#InserisciAnnuncio").modal("show");',1000);
+		}
 	});	
 	
 };

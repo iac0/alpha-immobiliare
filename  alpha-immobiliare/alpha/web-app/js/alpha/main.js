@@ -1,4 +1,5 @@
 $(document).ready(function(){
+var multiplo= false;
 $.ajax({
 	cache:false
 });
@@ -19,7 +20,7 @@ loadInserisciUtente();
 
 caricaUltimiAnnunci();	
 $("#dp,#dp2").datepicker();
-$("#ricercaNumeroAgenzia").typeahead({
+$("#ricercaNumeroAgenzia,#telefonoRicerca").typeahead({
     source: function (typeahead, query) {
         return $.post('/alpha/agenzia/autocomplete', { query: query }, function (data) {
             return typeahead.process(data);
@@ -29,7 +30,7 @@ $("#ricercaNumeroAgenzia").typeahead({
     items: 14
 });
 
-$("#ricercaNomeUtente,#assegnaNomeUtente").typeahead({
+$("#ricercaNomeUtente,#assegnaNomeUtente,#utenteRicerca").typeahead({
     source: function (typeahead, query) {
         return $.post('/alpha/user/autocomplete', { username: query }, function (data) {
             return typeahead.process(data);

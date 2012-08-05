@@ -1,8 +1,10 @@
 <%@ page import="alpha.anagrafica.Zona" %>   
 <div class="modal fade" id="InserisciAnnuncio" style="display: none;">
 				<div class="modal-header">
-				<button class="close" data-dismiss="modal">x</button>
-				<h3>Inserisci Annuncio</h3>
+				<h3>Inserisci Annuncio<span class="floatr">
+				<button class="btn btn-danger" id="attivaInserimentoMultiplo">Attiva inserimento Multiplo</button>
+				</span></h3>
+				
 		</div>
 		<div class="modal-body">
 		<div class="row-fluid">

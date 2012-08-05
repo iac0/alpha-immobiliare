@@ -10,6 +10,26 @@ $(document).ready(function(){
 					$("#InviaMessaggioUtente").modal("hide");
 				});
 	});		
+	$("#cancellaTuttiFiltri").click(function(){
+		$("#divRicerca :input").val("");
+		
+	});
+	$("#chiudiModalAnnuncio").click(function(){
+		multiplo = false;
+	});
+	$("#attivaInserimentoMultiplo").click(function(){
+		if($(this).hasClass("btn-danger"))
+			{
+			multiplo=true;
+			$(this).removeClass("btn-danger").addClass("btn-success").text("Disattiva inserimento Multiplo")
+			}
+		else 
+		{
+			multiplo = false;
+			$(this).addClass("btn-danger").removeClass("btn-success").text("Attiva inserimento Multiplo")
+		}
+		
+	});
 	
 	$("#ricercaStart").click(function(){
 		startRicerca();
@@ -29,6 +49,7 @@ $(document).ready(function(){
 	});
 	
 	$("#creaScheda").click(function(){
+		multiplo = false;
 		$("#saveAnnuncio").trigger("click");
 		setTimeout(
 				function (){
