@@ -84,8 +84,10 @@
             <th>#</th>
             <th>Telefono</th>
             <th>Prezzo</th>
+            
             <th>Zona</th>
             <th>Data</th>
+            <th>N&deg; scheda</th>
             <th></th>
           </tr>
         </thead>
@@ -106,6 +108,8 @@
             <th>Utente</th>
             <th>Telefono</th>
             <th>Prezzo</th>
+            <th>N&deg; scheda</th>
+            <th>Scheda Presente?</th>
             <th>Risposta</th>
             <th>Zona</th>
             <th>Data</th>
@@ -122,6 +126,7 @@
     <div class="span6 well prettyprint linenums" style="margin-bottom: 18px; min-height:285px;" id="divRicerca">
 	<i class="icon-search"></i>
 	<span class="spacer"><strong>Ricerca annunci</strong></span>
+	<span class="floatr"><button class="btn btn-primary" id="cancellaTuttiFiltri">Cancella Filtri</button></span>
 	<hr/>
 	<div class="form-vertical" >
 	<div class="input-append date mtop10 spacer2" id="dp" data-date="<g:formatDate format="dd-MM-yyyy" date="${new Date()}"/>" data-date-format="dd-mm-yyyy">
@@ -190,6 +195,12 @@
 <option value="Tuscolano" >Tuscolano</option>
 </select>
 		 	 
+		</div>
+				<div class="input-append mtop10 spacer2" >
+			<label for="telefono">Numero Scheda:</label>
+			<span class="add-on">N&deg;</span>
+			<input class="span6" size="16" type="text" id="idAnnRicerca" value="">
+		 	
 		</div>
 		<div class="input-append mtop10 spacer2" >
 			<label for="telefono">Utente:</label>

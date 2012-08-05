@@ -3,12 +3,15 @@
             <td>${annuncio.utente.username }</td>
             <td>${annuncio.telefono}</td>
             <td>
-            <g:formatNumber number="${annuncio.prezzo}" type="currency" currencyCode="EUR" />
+            <g:formatNumber number="${annuncio.prezzo}" type="currency"  maxFractionDigits="0"/>
+            </td>
+            <td>
+            ${annuncio.id }
             </td>
             <td>${annuncio.risposta}</td>
             <td>${annuncio.zona}</td>
             <td>
-            <g:formatDate date="${annuncio.dataInserimento}" type="datetime" style="LONG" timeStyle="SHORT"/>
+            <g:formatDate date="${annuncio.dataInserimento}" type="date" style="short"/>
             
             </td>
           </tr>

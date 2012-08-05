@@ -27,6 +27,7 @@ function startRicerca(){
 				prezzo:$("#prezzoRicerca").val(),
 				dataDa:$("#dataDa").val(),
 				dataA:$("#dataA").val(),
+				idAnn:$("#idAnnRicerca").val(),
 				utente:$("#utenteRicerca").val()
 			},
 			function(data){

@@ -158,6 +158,8 @@ def alphaService
 		User utente = alphaService.getUtente()
 		def annunci =  Annuncio.withCriteria{
 			and{
+			if(params.idAnn)
+			eq("id",params.idAnn.toLong())
 			if(params.prezzo)
 			eq("prezzo",params.prezzo.replaceAll("\\.","").replaceAll(" ", "").toInteger())
 			if(params.telefono)
