@@ -223,4 +223,11 @@ def alphaService
 		render result as JSON
 		
 	}
+	@Secured (['ROLE_USER','ROLE_ADMIN'])
+	def autocomplete() {
+		def map = Annuncio.findAllByTelefonoIlike("%${params.query}%").collect{
+			[name:it.telefono]
+		}
+		render map as JSON
+	}
 }

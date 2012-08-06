@@ -20,7 +20,7 @@ loadInserisciUtente();
 
 caricaUltimiAnnunci();	
 $("#dp,#dp2").datepicker();
-$("#ricercaNumeroAgenzia,#telefonoRicerca").typeahead({
+$("#ricercaNumeroAgenzia").typeahead({
     source: function (typeahead, query) {
         return $.post('/alpha/agenzia/autocomplete', { query: query }, function (data) {
             return typeahead.process(data);
@@ -28,6 +28,16 @@ $("#ricercaNumeroAgenzia,#telefonoRicerca").typeahead({
     },
     property: "name",
     items: 14
+});
+
+$("#telefonoRicerca").typeahead({
+    source: function (typeahead, query) {
+        return $.post('/alpha/annuncio/autocomplete', { query: query }, function (data) {
+            return typeahead.process(data);
+        });
+    },
+    property: "name",
+    items: 8
 });
 
 $("#ricercaNomeUtente,#assegnaNomeUtente,#utenteRicerca").typeahead({
