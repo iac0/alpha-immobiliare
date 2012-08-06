@@ -4,6 +4,7 @@
 				<h3>Inserisci Annuncio<span class="floatr">
 				<button class="btn btn-danger" id="attivaInserimentoMultiplo">Attiva inserimento Multiplo</button>
 				</span></h3>
+				<p id="numeroDellaScheda"></p>
 				
 		</div>
 		<div class="modal-body">
