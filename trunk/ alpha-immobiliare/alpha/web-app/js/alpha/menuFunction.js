@@ -171,7 +171,8 @@ function loadInserisciAnnuncio(){
 		
 	});
 	
-	$("#InserisciAnnuncio").on("hidden",function(){	
+	$("#InserisciAnnuncio").on("hidden",function(){
+		$("#numeroDellaScheda").html("");
 		pollingMiei();
 		$(".toClose").remove();
 		$("#toRemove").remove();
@@ -353,6 +354,7 @@ function caricaInserisciAnnuncio(){
 			$("#prezzo").val(data.prezzo);
 			$("#zona").val(data.zona);
 			$("#metriQuadrati").val(data.metriQuadrati);
+			$("#numeroDellaScheda").html("Numero della scheda:<strong>"+data.id+"</strong>");
 			showInserisciAnnuncio();
 			});
 };	
