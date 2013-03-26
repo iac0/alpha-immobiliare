@@ -25,7 +25,7 @@ def alphaService
 		}
 		else nuova = Annuncio.get(params.update)
 		nuova.properties=params
-		nuova.risposta = nuova.tipoRisposta."${params.risposta}"
+		nuova.risposta = nuova.tipoRisposta.no
 		nuova.utente=utente
 		if(!nuova.save(flush:true))
 			{
@@ -123,7 +123,7 @@ def alphaService
 	
 	@Secured (['ROLE_USER','ROLE_ADMIN'])
 	def getScheda(){
-		println "questo è "+params.id
+		println "questo ï¿½ "+params.id
 		def annuncio = Annuncio.get(params.id)
 		if(!annuncio.schedaAssociata)
 		annuncio.schedaAssociata = new Scheda().save(flush:true)
@@ -178,7 +178,16 @@ def alphaService
 			User ricercaU = User.findByUsername(params.utente)
 			eq ("utente",ricercaU)
 			}
+            if(params.mq){
+                schedaAssociata{
+                    eq("metriQuadriEsterni",params.mq?.toInteger())
+                }
+            }
+            if (params.schedaPresente){
+                params.schedaPresente==1?isNotNull("schedaAssociata"):isNull("schedaAssociata")
+            }
 			order ("dataInserimento","desc")
+
 			}
 			
 		}

@@ -11,12 +11,21 @@
 ${annuncio.id}
 </td>
 <td>
+
+
+
 <div class="btn-group">
           <button idAnnuncio="${annuncio.id}" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><i class="icon-pencil icon-white"></i> Azioni <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li class="eliminaAnnuncio"><a><i class="icon-trash"></i> Elimina</a></li>
             <li class="modificaAnnuncio"><a><i class="icon-wrench"></i> Modifica</a></li>
             <li class="divider"></li>
+
+            <li >
+                <a onclick='$("#annuncioIdent").val(${annuncio.id});$("#creaScheda").trigger("click")' params="${annuncio.id}"><i class="icon-wrench"></i> Visualizza Scheda</a>
+            </li>
+                <li class="divider"></li>
+
             <li class="segnaAgenziaAnnuncio"><a><i class="icon-briefcase"></i> Segna come Agenzia</a></li>
           </ul>
         </div>

@@ -12,7 +12,7 @@
             <td>
             ${annuncio.schedaAssociata?'SI':'NO' }
             </td>
-            <td>${annuncio.risposta}</td>
+            %{--<td>${annuncio.risposta}</td>--}%
             <td>${annuncio.zona}</td>
             <td>
             <g:formatDate date="${annuncio.dataInserimento}" type="date" style="short" />
@@ -35,7 +35,11 @@
 			</div>
 			</td>
             </g:if>
-            <g:else><td></td></g:else>
+            <g:else><td>
+                <g:if test="${annuncio.schedaAssociata}">
+                    <g:link action="visualizzaScheda" params="${annuncio.id}" class="btn btn-info"> Visualizza Scheda</g:link>
+                </g:if>
+            </td></g:else>
             
           </tr>
          

@@ -172,12 +172,12 @@ function loadInserisciAnnuncio(){
 	});
 	
 	$("#InserisciAnnuncio").on("hidden",function(){
-		$("#numeroDellaScheda").html("");
+		$("#numeroDellaScheda , #schedaPresente").html("");
 		pollingMiei();
 		$(".toClose").remove();
 		$("#toRemove").remove();
 		$("#saveAnnuncio").show();
-		$("#saveAnnuncioForm input").val("");
+		$("#saveAnnuncioForm input,#saveAnnuncioForm textarea").val("");
 		$("#annuncioIdent").val("");
 		$("#verificaNumero").removeClass("btn-success btn-danger").addClass("btn-warning");
 		
@@ -355,6 +355,7 @@ function caricaInserisciAnnuncio(){
 			$("#zona").val(data.zona);
 			$("#metriQuadrati").val(data.metriQuadrati);
 			$("#numeroDellaScheda").html("Numero della scheda:<strong>"+data.id+"</strong>");
+            $("#schedaPresente").html(data.schedaAssociata?" Presente": " non Presente");
 			showInserisciAnnuncio();
 			});
 };	

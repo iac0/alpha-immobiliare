@@ -49,6 +49,15 @@
               
             </div>
           </div>
+              <div class="control-group">
+                  <label class="control-label" for="schedaRiscaldamento">Riscaldamento</label>
+                  <div class="controls">
+                      <select id="schedaRiscaldamento" values="${annuncio.schedaAssociata.tipoRiscaldamento?.toLowerCase()}">
+                          <option value="autonomo">Autonomo</option>
+                          <option value="centralizzato">Centralizzato</option>
+                      </select>
+                  </div>
+              </div>
           <div class="control-group">
             <label class="control-label" for="schedaPiano">Piano</label>
             <div class="controls">
@@ -63,50 +72,32 @@
                 <input type="checkbox" id="schedaLibero" value="${annuncio.schedaAssociata.libero}" ${annuncio.schedaAssociata.libero?'checked':''}>
               </label>
             </div>
+              <label class="control-label" for="schedaSoffitta">Soffitta</label>
+              <div class="controls">
+                  <label class="checkbox">
+                      <input type="checkbox" id="schedaSoffitta" value="${annuncio.schedaAssociata.soffitta}" ${annuncio.schedaAssociata.soffitta?'checked':''}>
+                  </label>
+              </div>
+              <label class="control-label" for="schedaBox">Box</label>
+              <div class="controls">
+                  <label class="checkbox">
+                      <input type="checkbox" id="schedaBox" value="${annuncio.schedaAssociata.box}" ${annuncio.schedaAssociata.box?'checked':''}>
+                  </label>
+              </div>
+              <label class="control-label" for="schedaPostoAuto">Posto Auto</label>
+              <div class="controls">
+                  <label class="checkbox">
+                      <input type="checkbox" id="schedaPostoAuto" value="${annuncio.schedaAssociata.postoAuto}" ${annuncio.schedaAssociata.postoAuto?'checked':''}>
+                  </label>
+              </div>
+              <label class="control-label" for="schedaAscensore">Ascensore</label>
+              <div class="controls">
+                  <label class="checkbox">
+                      <input type="checkbox" id="schedaAscensore" value="${annuncio.schedaAssociata.ascensore}" ${annuncio.schedaAssociata.ascensore?'checked':''}>
+                  </label>
+              </div>
           </div>
-
-          <div class="control-group">
-            <label class="control-label" for="schedaSoffitta">Soffitta</label>
-            <div class="controls">
-              <label class="checkbox">
-                <input type="checkbox" id="schedaSoffitta" value="${annuncio.schedaAssociata.soffitta}" ${annuncio.schedaAssociata.soffitta?'checked':''}>
-              </label>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="schedaBox">Box</label>
-            <div class="controls">
-              <label class="checkbox">
-                <input type="checkbox" id="schedaBox" value="${annuncio.schedaAssociata.box}" ${annuncio.schedaAssociata.box?'checked':''}>
-              </label>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="schedaPostoAuto">Posto Auto</label>
-            <div class="controls">
-              <label class="checkbox">
-                <input type="checkbox" id="schedaPostoAuto" value="${annuncio.schedaAssociata.postoAuto}" ${annuncio.schedaAssociata.postoAuto?'checked':''}>
-              </label>
-            </div>
-          </div>    
-           <div class="control-group">
-            <label class="control-label" for="schedaAscensore">Ascensore</label>
-            <div class="controls">
-              <label class="checkbox">
-                <input type="checkbox" id="schedaAscensore" value="${annuncio.schedaAssociata.ascensore}" ${annuncio.schedaAssociata.ascensore?'checked':''}>
-              </label>
-            </div>
-          </div>                
-          <div class="control-group">
-            <label class="control-label" for="schedaRiscaldamento">Riscaldamento</label>
-            <div class="controls">
-              <select id="schedaRiscaldamento" values="${annuncio.schedaAssociata.tipoRiscaldamento?.toLowerCase()}">
-                <option value="autonomo">Autonomo</option>
-                <option value="centralizzato">Centralizzato</option>
-              </select>
-            </div>
-          </div>
-          <hr/>
+            <hr/>
           <h2>Appuntamento:</h2>
 		     <div class="control-group input-append date" id="dpScheda" data-date="<g:formatDate format="dd-MM-yyyy" date="${new Date()}"/>" data-date-format="dd-mm-yyyy">
             <label class="control-label" for="schedaGiorno">Data Appuntamento:</label>
@@ -132,7 +123,7 @@
             </div>
             
             <div class="control-group">
-            <label class="control-label" for="schedCitofono">Citofono</label>
+            <label class="control-label" for="schedaCitofono">Citofono</label>
             <div class="controls">
               <input type="text" class="input-xlarge" id="schedaCitofono" value="${annuncio.schedaAssociata.appuntamento.citofono}">
               
@@ -168,6 +159,7 @@
               </label>
             </div>
           </div>
+      </div>
         </fieldset>
         <div id="responseScheda"></div>
         <center>
