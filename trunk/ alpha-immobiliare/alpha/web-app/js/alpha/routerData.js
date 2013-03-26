@@ -28,7 +28,9 @@ function startRicerca(){
 				dataDa:$("#dataDa").val(),
 				dataA:$("#dataA").val(),
 				idAnn:$("#idAnnRicerca").val(),
-				utente:$("#utenteRicerca").val()
+				utente:$("#utenteRicerca").val(),
+                mq:$("#metriQuadriRicerca").val(),
+                schedaPresente:$("#schedaPresenteRicerca").val()
 			},
 			function(data){
 				$("#risultatoRicerca").html(data);

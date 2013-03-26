@@ -18,6 +18,9 @@
       .sidebar-nav {
         padding: 9px 0;
       }
+        .customOption{
+            color:#7bb33d !important;
+        }
     </style>
     <link href="../css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -110,7 +113,7 @@
             <th>Prezzo</th>
             <th>N&deg; scheda</th>
             <th>Scheda Presente?</th>
-            <th>Risposta</th>
+            %{--<th>Risposta</th>--}%
             <th>Zona</th>
             <th>Data</th>
             <th></th>
@@ -142,68 +145,82 @@
 		 	
 		</div>
 		<div class="input-append mtop10 spacer2">
-			<label for="prezzo">Prezzo:</label>
+			<label for="prezzoRicerca">Prezzo:</label>
 			<span class="add-on">€</span>
 		  	<input class="span6" size="10" type="text" id="prezzoRicerca" value="">
 		 	 <span class="add-on">.00</span>
 		</div>
 		<div class="input-append mtop10 spacer2" >
-			<label for="telefono">Numero di telefono:</label>
+			<label for="telefonoRicerca">Numero di telefono:</label>
 			<span class="add-on"><i class="icon-book"></i></span>
 			<input class="span6" size="16" type="text" id="telefonoRicerca" value="">
 		 	 <span class="add-on"><i class="icon-signal"></i></span>
 		</div>
 		<div class="input-append mtop10 spacer2" >
-			<label for="telefono">Zona:</label>
+			<label for="zonaRicerca">Zona:</label>
 			<span class="add-on"><i class="icon-globe"></i></span>
 	
 			<select class="span6" id="zonaRicerca" value="">
 <option value="" selected="selected">Seleziona se vuoi una zona</option>
-<option value="Affitti" >Affitti</option>
-<option value="Appio Claudio Appia - Pignatelli" >Appio Claudio Appia - Pignatelli</option>
-<option value="Appio Latino" >Appio Latino</option>
-<option value="Aurelio - Boccea" >Aurelio - Boccea</option>
-<option value="Aventino - San Saba" >Aventino - San Saba</option>
-<option value="Balduina - Montemario" >Balduina - Montemario</option>
-<option value="Bologna - Nomentana" >Bologna - Nomentana</option>
-<option value="Bravetta - Casetta Mattei" >Bravetta - Casetta Mattei</option>
-<option value="Casilino - Prenestino" >Casilino - Prenestino</option>
-<option value="Cassia - Olgiata" >Cassia - Olgiata</option>
-<option value="Centro Storico" >Centro Storico</option>
-<option value="Colombo - Ardeatino" >Colombo - Ardeatino</option>
-<option value="Don Bosco - Cinecitta" >Don Bosco - Cinecitta</option>
-<option value="Esquilino - San Lorenzo" >Esquilino - San Lorenzo</option>
-<option value="Eur" >Eur</option>
-<option value="Flaminio Vigna - Clara" >Flaminio Vigna - Clara</option>
-<option value="Gregorio VII - B. Ubaldi" >Gregorio VII - B. Ubaldi</option>
-<option value="Laurentino - Montagnola" >Laurentino - Montagnola</option>
-<option value="Marconi - Ostiense" >Marconi - Ostiense</option>
-<option value="Montesacro - Talenti" >Montesacro - Talenti</option>
-<option value="Monteverde - Gianicolense" >Monteverde - Gianicolense</option>
-<option value="Ostia - Fiumicino" >Ostia - Fiumicino</option>
-<option value="Palocco - Acilia" >Palocco - Acilia</option>
-<option value="Parioli - Pinciano" >Parioli - Pinciano</option>
-<option value="Portuense - Magliana" >Portuense - Magliana</option>
-<option value="Prati - Clodio" >Prati - Clodio</option>
-<option value="Prati Fiscali - Nuovo Salario" >Prati Fiscali - Nuovo Salario</option>
-<option value="Salario - Trieste" >Salario - Trieste</option>
-<option value="San Giovanni - Appia Nuova" >San Giovanni - Appia Nuova</option>
-<option value="Tiburtino - Collatino" >Tiburtino - Collatino</option>
-<option value="Torre Vecchia - Sacchetti" >Torre Vecchia - Sacchetti</option>
-<option value="Trastevere - Borgo" >Trastevere - Borgo</option>
-<option value="Trionfale" >Trionfale</option>
-<option value="Tuscolano" >Tuscolano</option>
-</select>
+                <option value="Affitti" >Affitti</option>
+                <option value="Appio Claudio Appia - Pignatelli" >Appio Claudio Appia - Pignatelli</option>
+                <option value="Appio Latino" >Appio Latino</option>
+                <option value="Aurelio - Boccea" >Aurelio - Boccea</option>
+                <option value="Aventino - San Saba" >Aventino - San Saba</option>
+                <option value="Balduina - Montemario" >Balduina - Montemario</option>
+                <option value="Bologna - Nomentana" >Bologna - Nomentana</option>
+                <option value="Bravetta - Casetta Mattei" >Bravetta - Casetta Mattei</option>
+                <option value="Casilino - Prenestino" >Casilino - Prenestino</option>
+                <option value="Cassia - Olgiata" >Cassia - Olgiata</option>
+                <option class="customOption" value="Centro Storico" selected="selected">Centro Storico</option>
+                <option value="Colombo - Ardeatino" >Colombo - Ardeatino</option>
+                <option value="Don Bosco - Cinecitta" >Don Bosco - Cinecitta</option>
+                <option value="Esquilino - San Lorenzo" >Esquilino - San Lorenzo</option>
+                <option value="Eur" >Eur</option>
+                <option value="Flaminio Vigna - Clara" >Flaminio Vigna - Clara</option>
+                <option value="Gregorio VII - B. Ubaldi" >Gregorio VII - B. Ubaldi</option>
+                <option value="Laurentino - Montagnola" >Laurentino - Montagnola</option>
+                <option value="Marconi - Ostiense" >Marconi - Ostiense</option>
+                <option value="Montesacro - Talenti" >Montesacro - Talenti</option>
+                <option class="customOption" value="Monteverde - Gianicolense" >Monteverde - Gianicolense</option>
+                <option value="Ostia - Fiumicino" >Ostia - Fiumicino</option>
+                <option value="Palocco - Acilia" >Palocco - Acilia</option>
+                <option class="customOption" value="Parioli - Pinciano" >Parioli - Pinciano</option>
+                <option value="Portuense - Magliana" >Portuense - Magliana</option>
+                <option class="customOption" value="Prati - Clodio" >Prati - Clodio</option>
+                <option value="Prati Fiscali - Nuovo Salario" >Prati Fiscali - Nuovo Salario</option>
+                <option class="customOption" value="Salario - Trieste" >Salario - Trieste</option>
+                <option value="San Giovanni - Appia Nuova" >San Giovanni - Appia Nuova</option>
+                <option value="Tiburtino - Collatino" >Tiburtino - Collatino</option>
+                <option value="Torre Vecchia - Sacchetti" >Torre Vecchia - Sacchetti</option>
+                <option class="customOption"  value="Trastevere - Borgo" >Trastevere - Borgo</option>
+                <option value="Trionfale" >Trionfale</option>
+                <option value="Tuscolano" >Tuscolano</option>
+            </select>
 		 	 
 		</div>
 				<div class="input-append mtop10 spacer2" >
-			<label for="telefono">Numero Scheda:</label>
+			<label for="idAnnRicerca">Numero Scheda:</label>
 			<span class="add-on">N&deg;</span>
 			<input class="span6" size="16" type="text" id="idAnnRicerca" value="">
 		 	
 		</div>
+        <div class="input-append mtop10 spacer2" >
+            <label for="metriQuadriRicerca">Metri Quadri:</label>
+
+            <input class="span6" size="16" type="text" id="metriQuadriRicerca" value="">
+
+        </div>
+        <div class="input-append mtop10 spacer2" >
+            <label for="schedaPresenteRicerca">Scheda Presente:</label>
+            <select class="span6" id="schedaPresenteRicerca" value="">
+                <option value="">Visualizza tutti gli annunci</option>
+                <option value="1">Visualizza gli annunci che HANNO schede</option>
+                <option value="0">Visualizza gli annunci che NON hanno schede</option>
+                </select>
+        </div>
 		<div class="input-append mtop10 spacer2" >
-			<label for="telefono">Utente:</label>
+			<label for="utenteRicerca">Utente:</label>
 			<span class="add-on"><i class="icon-user"></i></span>
 			<input class="span6" size="16" type="text" id="utenteRicerca" value="">
 			<a class="btn btn-success" id="ricercaStart"><i class="icon-ok icon-white"></i> Ricerca</a>
@@ -248,7 +265,7 @@
     <script src="../js/alpha/routerData.js"></script>
     <script src="../js/alpha/main.js"></script>
     <audio controls preload="auto" style="display:none;">
-	<source src="${resource(dir:'sound/',file:'error.wav') }" controls></source>
+	<source src="${resource(dir:'sound/',file:'error.wav') }" controls/>
 	</audio>
 	
   </body>

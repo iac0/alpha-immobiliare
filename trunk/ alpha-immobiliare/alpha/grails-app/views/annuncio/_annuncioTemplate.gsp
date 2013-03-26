@@ -8,7 +8,7 @@
             <td>
             ${annuncio.id }
             </td>
-            <td>${annuncio.risposta}</td>
+            %{--<td>${annuncio.risposta}</td>--}%
             <td>${annuncio.zona}</td>
             <td>
             <g:formatDate date="${annuncio.dataInserimento}" type="date" style="short"/>
