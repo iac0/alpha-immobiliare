@@ -9,7 +9,7 @@ import grails.plugins.springsecurity.Secured
 
 class AnnuncioController {
     def alphaService
-
+    def mailService
     @Secured(['ROLE_USER', 'ROLE_ADMIN'])
     def saveAnnuncio() {
         println params
@@ -258,7 +258,30 @@ class AnnuncioController {
         if (key.contains("proprietario")){
             annuncio.schedaAssociata?.proprietario = params.value
         }
+        if(annuncio.utente!= alphaService.getUtente())
+        {
+            def destinatario = annuncio.utente
+            def corpo = """
+			Ciao ${destinatario.username}, l'utente <b>${alphaService.getUtente().username}</b> ha modificato il tuo annuncio<br>
+			Scheda: ${annuncio.id}
+			Telefono:${annuncio.telefono}
+			Zona:${annuncio.zona}
+
+			<br><br>
+
+
+		"""
+            Thread.start {
+                mailService.sendMail {
+                    to destinatario.email
+                    from alphaService.getUtente().email
+                    subject "Modifica Annuncio ${annuncio.id}"
+                    html corpo
+                }
+            }
+        }
         annuncio.utente = alphaService.getUtente()
+
         annuncio.dataUltimaModifica = new Date()
         annuncio.save(flush: true)
         render params.value
