@@ -7,7 +7,11 @@
             <th>N&deg; scheda</th>
             %{--<th>Risposta</th>--}%
             <th>Zona</th>
-            <th>Data</th>
+            <th>Data inserimento</th>
+             <th>Data ultima modifica</th>
+             <th>Note</th>
+             <th>Descrizione</th>
+             <th>Propietario</th>
           </tr>
         </thead>
         

@@ -18,6 +18,15 @@
             <g:formatDate date="${annuncio.dataInserimento}" type="date" style="short" />
             
             </td>
+              <td>
+                  <g:if test="${annuncio.dataUltimaModifica}">
+                      <g:formatDate date="${annuncio.dataUltimaModifica}" type="date" style="short"/>
+                  </g:if>
+
+              </td>
+              <td class="edit_area" id="ricercaeditNote${annuncio?.id}">${annuncio.note}</td>
+              <td class="edit_area" id="ricercaeditComposizione${annuncio?.id}">${annuncio.composizione}</td>
+              <td class="edit_area" id="ricercaeditProprietario${annuncio?.id}">${annuncio.schedaAssociata?.proprietario}</td>
             <g:set var="userOk"><sec:username/></g:set>
             <g:set var="userOk2" value="${annuncio.utente.username}"></g:set>
            	
@@ -29,7 +38,12 @@
 	          <ul class="dropdown-menu">
 	             <li class="eliminaAnnuncio"><a><i class="icon-trash"></i> Elimina</a></li>
             <li class="modificaAnnuncio"><a><i class="icon-wrench"></i> Modifica</a></li>
-            <li class="divider"></li>
+                  <li class="divider"></li>
+
+                  <li >
+                      <a onclick='$("#annuncioIdent").val(${annuncio.id});$("#creaScheda").trigger("click")' params="${annuncio.id}"><i class="icon-wrench"></i> Visualizza Scheda</a>
+                  </li>
+                  <li class="divider"></li>
             <li class="segnaAgenziaAnnuncio"><a><i class="icon-briefcase"></i> Segna come Agenzia</a></li>
 	          </ul>
 			</div>
@@ -37,7 +51,7 @@
             </g:if>
             <g:else><td>
                 <g:if test="${annuncio.schedaAssociata}">
-                    <g:link action="visualizzaScheda" params="${annuncio.id}" class="btn btn-info"> Visualizza Scheda</g:link>
+                    <g:link action="visualizzaScheda" id="${annuncio.id}" class="btn btn-info" target="_blank"> Visualizza Scheda</g:link>
                 </g:if>
             </td></g:else>
             

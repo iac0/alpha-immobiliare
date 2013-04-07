@@ -115,7 +115,11 @@
             <th>Scheda Presente?</th>
             %{--<th>Risposta</th>--}%
             <th>Zona</th>
-            <th>Data</th>
+              <th>Data inserimento</th>
+              <th>Data ultima modifica</th>
+              <th>Note</th>
+              <th>Descrizione</th>
+              <th>Propietario</th>
             <th></th>
           </tr>
         </thead>
@@ -264,6 +268,7 @@
     <script src="../js/alpha/menuFunction.js"></script>
     <script src="../js/alpha/routerData.js"></script>
     <script src="../js/alpha/main.js"></script>
+  <script src="../js/alpha/editable.js"></script>
     <audio controls preload="auto" style="display:none;">
 	<source src="${resource(dir:'sound/',file:'error.wav') }" controls/>
 	</audio>
