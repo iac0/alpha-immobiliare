@@ -15,6 +15,7 @@ class Annuncio {
 	User utente
 	Date dataInserimento = new Date()
 	Date dataUltimoInserimento = new Date()
+    Date dataUltimaModifica
 	
     static constraints = {
 		telefono unique:['telefono'],maxSize:12 
@@ -26,6 +27,7 @@ class Annuncio {
 		composizione maxSize:100, nullable:true
 		note maxSize:2500 ,nullable:true
 		dataUltimoInserimento nullable:true
+        dataUltimaModifica nullable: true
 		
 			
     }
