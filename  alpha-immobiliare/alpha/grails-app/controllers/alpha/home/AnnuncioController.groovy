@@ -292,4 +292,9 @@ class AnnuncioController {
     def visualizzaScheda(){
 
     }
+
+    @Secured([ 'ROLE_ADMIN'])
+    def listaAgenzie(){}
+    @Secured(['ROLE_ADMIN'])
+    def listaAnnuncio(){}
 }
