@@ -26,8 +26,8 @@
               </td>
               <g:set var="userOk"><sec:username/></g:set>
               <g:set var="userOk2" value="${annuncio.utente.username}"></g:set>
-              <td class="edit_area" id="ricercaeditNote${annuncio?.id}">${annuncio.note}</td>
-              <td class="edit_area" id="ricercaeditComposizione${annuncio?.id}">${annuncio.composizione}</td>
+              <td class="edit_area" style="max-width: 150px;"id="ricercaeditNote${annuncio?.id}">${annuncio.note}</td>
+              <td class="edit_area" style="max-width: 50px;" id="ricercaeditComposizione${annuncio?.id}">${annuncio.composizione}</td>
               <td class="edit_area" id="ricercaeditProprietario${annuncio?.id}">${annuncio.schedaAssociata?.proprietario}</td>
 
            	

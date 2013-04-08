@@ -33,7 +33,7 @@ function caricaUltimiAnnunci(ultimoCaricato) {
                     poll();
                 }
             });
-        }, 30000);
+        }, 90000);
     })();
 
 
