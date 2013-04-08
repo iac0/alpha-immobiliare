@@ -21,6 +21,18 @@ class AlphaTemplateTagLib {
 			divMenu+="<li class='${}'><a href='#${menu.labelMenu.replaceAll(' ','')}' data-toggle='modal'>${menu.labelMenu}</a></li>"
 		
         }
+        if (isAdmin){
+            divMenu+="""
+        <li><a target="_blank" href="${g.createLink(controller: 'annuncio',action: 'lavorato')}">Visualizza Lavorato</a></li>
+        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lista completa <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li> <a target="_blank" href="${g.createLink(controller: 'annuncio',action: 'listaAnnuncio')}" > Annunci</a></li>
+                                 <li> <a target="_blank" href="${g.createLink(controller: 'annuncio',action: 'listaAgenzie')}" > Agenzie</a></li>
+                            </ul>
+                        </li>
+        """
+        }
 		divMenu +="""</ul>
           </div><!--/.nav-collapse -->
 		"""
