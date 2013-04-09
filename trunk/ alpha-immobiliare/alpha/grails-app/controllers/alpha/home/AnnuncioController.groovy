@@ -258,7 +258,7 @@ class AnnuncioController {
         if (key.contains("proprietario")){
             annuncio.schedaAssociata?.proprietario = params.value
         }
-        if(annuncio.utente!= alphaService.getUtente())
+        if(annuncio.utente!= alphaService.getUtente() && !annuncio.schedaAssociata)
         {
             def destinatario = annuncio.utente
             def corpo = """
