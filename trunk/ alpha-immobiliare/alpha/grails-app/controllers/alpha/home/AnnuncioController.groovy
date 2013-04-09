@@ -263,7 +263,7 @@ class AnnuncioController {
             def destinatario = annuncio.utente
             def corpo = """
 			Ciao ${destinatario.username}, l'utente <b>${alphaService.getUtente().username}</b> ha modificato il tuo annuncio<br>
-			Scheda: ${annuncio.id}
+			Identificativo: ${annuncio.id}
 			Telefono:${annuncio.telefono}
 			Zona:${annuncio.zona}
 
@@ -297,4 +297,40 @@ class AnnuncioController {
     def listaAgenzie(){}
     @Secured(['ROLE_ADMIN'])
     def listaAnnuncio(){}
+    @Secured(['ROLE_ADMIN'])
+    def lavorato(){
+        def map = []
+        User.list(order: 'asc',sort:'username').each{ User u ->
+            String nomeUtente = "'${u.username}'"
+            def count = Annuncio.findAllByUtente(u).size()
+            if(count>0) {
+                def serie = [nomeUtente,count]
+
+                map.add(serie)
+            }
+        }
+
+        render(view: 'lavorato',model: [serie:map])
+    }
+    @Secured(['ROLE_ADMIN'])
+    def filtraSerie(){
+        def map = []
+        User.list(order: 'asc',sort:'username').each{ User u ->
+            String nomeUtente = "${u.username}"
+            def count = Annuncio.withCriteria {
+                eq("utente",u)
+                if(params.dataIni)
+                    gte("dataInserimento", new Date().parse("dd-MM-yyyy", params.dataIni))
+                if(params.dataFin)
+                    lte("dataInserimento", new Date().parse("dd-MM-yyyy", params.dataFin))
+            }.size()
+            if(count>0) {
+                def serie = [nomeUtente,count]
+
+                map.add(serie)
+            }
+        }
+
+        render map as JSON
+    }
 }
