@@ -176,7 +176,7 @@
                 <option value="Bravetta - Casetta Mattei" >Bravetta - Casetta Mattei</option>
                 <option value="Casilino - Prenestino" >Casilino - Prenestino</option>
                 <option value="Cassia - Olgiata" >Cassia - Olgiata</option>
-                <option class="customOption" value="Centro Storico" selected="selected">Centro Storico</option>
+                <option class="customOption" value="Centro Storico">Centro Storico</option>
                 <option value="Colombo - Ardeatino" >Colombo - Ardeatino</option>
                 <option value="Don Bosco - Cinecitta" >Don Bosco - Cinecitta</option>
                 <option value="Esquilino - San Lorenzo" >Esquilino - San Lorenzo</option>
