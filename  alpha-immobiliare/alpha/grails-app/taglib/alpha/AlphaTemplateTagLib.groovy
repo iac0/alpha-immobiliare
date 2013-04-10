@@ -32,6 +32,10 @@ class AlphaTemplateTagLib {
                             </ul>
                         </li>
         """
+        } else {
+            divMenu+="""
+            <li><a href="#" id="notifiche"  >Notifiche  <span class="badge badge-warning">0</span></a></li>
+            """
         }
 		divMenu +="""</ul>
           </div><!--/.nav-collapse -->

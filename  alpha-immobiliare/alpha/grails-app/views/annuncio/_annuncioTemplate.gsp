@@ -20,9 +20,17 @@
         </g:if>
 
     </td>
+<g:set var="userOk"><sec:username/></g:set>
+<g:set var="userOk2" value="${annuncio.utente.username}"></g:set>
+<g:if test="${annuncio.schedaAssociata==null || userOk2 == ''+userOk }">
     <td class="edit_area" id="editNote${annuncio?.id}">${annuncio.note}</td>
     <td class="edit_area" id="editComposizione${annuncio?.id}">${annuncio.composizione}</td>
     <td class="edit_area" id="editProprietario${annuncio?.id}">${annuncio.schedaAssociata?.proprietario}</td>
+    </g:if><g:else>
+    <td class="" id="editNote${annuncio?.id}">${annuncio.note}</td>
+    <td class="" id="editComposizione${annuncio?.id}">${annuncio.composizione}</td>
+    <td class="" id="editProprietario${annuncio?.id}">${annuncio.schedaAssociata?.proprietario}</td>
+    </g:else>
 </tr>
          
         

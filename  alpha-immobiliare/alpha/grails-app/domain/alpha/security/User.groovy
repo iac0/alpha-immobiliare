@@ -1,5 +1,7 @@
 package alpha.security
 
+import alpha.gestioneAnnunci.Notifica
+
 class User {
 
 	transient springSecurityService
@@ -21,6 +23,7 @@ class User {
 	static mapping = {
 		password column: '`password`'
 	}
+
 
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this).collect { it.role } as Set

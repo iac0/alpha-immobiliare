@@ -44,15 +44,33 @@ function loadInserisciAnnuncio(){
 		trigger:'manual',
 		title:"Con tale numero <br>&egrave; registrata una Agenzia"
 		});
-	
+
 	$('#creaScheda').popover(
 			{
 				title:"Apri scheda",
 				content:"Puoi aprire la scheda ora o in un altro momento.<br>" +
 						"Se apri la scheda le informazioni da te inserite relative all'annuncio saranno automaticamente salvate"
 			});
-	
-	
+
+
+    $.ajax({
+        url: "/alpha/annuncio/scegliGestione",
+        success: function (data) {
+            $('#notifiche').popover(
+                {
+                    title:"Le tue notifiche",
+                    content:data.html,
+                    placement:'bottom',
+                    trigger:'manual'
+                });
+            $('#notifiche').find(".badge").text(data.size);
+
+        }
+    });
+	 $("#notifiche").click(function(){
+         $('#notifiche').popover('toggle')
+
+     })
 	$("#saveAnnuncio").click(function(){
 		$salvaB = $(this);
 		$salvaB.hide();

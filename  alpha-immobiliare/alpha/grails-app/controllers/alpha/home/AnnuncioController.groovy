@@ -333,4 +333,62 @@ class AnnuncioController {
 
         render map as JSON
     }
+    @Secured(['ROLE_ADMIN','ROLE_USER'])
+    def richiediGestione(){
+        def annuncio = Annuncio.get(params.id)
+        Notifica notifica = new Notifica(annuncio: annuncio,visualizzata: false)
+        notifica.to = annuncio.utente
+        notifica.from = alphaService.getUtente()
+        notifica.messaggio = "Ciao ${annuncio.utente.username}, l'utente" +
+                " ${alphaService.getUtente().username} richiede la gestione<br>" +
+                "dell'annuncio <b>${annuncio.id}</b>, vuoi concederla?"
+
+        notifica.save(flush: true )
+        response.sendError(200,"ok")
+
+
+    }
+    @Secured(['ROLE_ADMIN','ROLE_USER'])
+    def scegliGestione(){
+        def notifiche = Notifica.findAllByToAndVisualizzata(alphaService.getUtente(),false)
+        def map = [:]
+        map.html =g.render(template: 'scegliGestione',model:[notifiche:notifiche])
+        map.size = notifiche.size()
+        render map as JSON
+
+
+    }
+    @Secured(['ROLE_ADMIN','ROLE_USER'])
+    def accettaGestione(){
+        def notifica = Notifica.get(params.id)
+        Notifica nuova = new Notifica(visualizzata: false,to:notifica.from,from:notifica.to)
+        def annuncio = notifica.annuncio
+        if (params.accetta=='true'){
+
+            annuncio.utente = notifica.from
+            annuncio.dataUltimaModifica = new Date()
+            annuncio.save()
+            nuova.messaggio = """
+            L'utente ${notifica.to.username} ha accettato la tua richiesta.<br>
+            Puoi ora modificare l'annuncio con id <b>${annuncio.id}</b>.
+            """
+
+
+        } else {
+            nuova.messaggio = """
+            L'utente ${notifica.to.username} ha rifiutato la tua richiesta.<br>
+            Avevi richiesto la gestione dell'annuncio con id <b>${annuncio.id}</b>.
+            """
+        }
+        nuova.save()
+        notifica.delete(flush: true)
+         response.sendError(200,"ok")
+    }
+
+    @Secured(['ROLE_USER','ROLE_ADMIN'])
+    def eliminaNotifica() {
+        Notifica notifica = Notifica.get(params.id)
+        notifica.delete(flush: true)
+        response.sendError(200,"ok")
+    }
 }
