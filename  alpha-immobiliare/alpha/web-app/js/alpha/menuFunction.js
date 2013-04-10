@@ -59,7 +59,7 @@ function loadInserisciAnnuncio(){
             $('#notifiche').popover(
                 {
                     title:"Le tue notifiche",
-                    content:data.html,
+
                     placement:'bottom',
                     trigger:'manual'
                 });
@@ -68,9 +68,17 @@ function loadInserisciAnnuncio(){
         }
     });
 	 $("#notifiche").click(function(){
-         $('#notifiche').popover('toggle')
 
-     })
+         $.get("/alpha/annuncio/scegliGestione", function(data) {
+             $('#notifiche').popover('toggle')
+             $("body").find('.popover-content').empty()
+             $("body").find('.popover-content').append(data.html);
+
+             $('#notifiche').find(".badge").text(data.size);
+         });
+        /* */
+
+     });
 	$("#saveAnnuncio").click(function(){
 		$salvaB = $(this);
 		$salvaB.hide();
