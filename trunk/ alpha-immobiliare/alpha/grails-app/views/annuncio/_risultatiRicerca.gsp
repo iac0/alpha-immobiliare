@@ -26,10 +26,16 @@
               </td>
               <g:set var="userOk"><sec:username/></g:set>
               <g:set var="userOk2" value="${annuncio.utente.username}"></g:set>
+              <g:if test="${annuncio.schedaAssociata==null || userOk2 == ''+userOk }">
               <td class="edit_area" style="max-width: 150px;"id="ricercaeditNote${annuncio?.id}">${annuncio.note}</td>
               <td class="edit_area" style="max-width: 50px;" id="ricercaeditComposizione${annuncio?.id}">${annuncio.composizione}</td>
               <td class="edit_area" id="ricercaeditProprietario${annuncio?.id}">${annuncio.schedaAssociata?.proprietario}</td>
+             </g:if> <g:else>
+              <td class="" style="max-width: 150px;"id="ricercaeditNote${annuncio?.id}">${annuncio.note}</td>
+              <td class="" style="max-width: 50px;" id="ricercaeditComposizione${annuncio?.id}">${annuncio.composizione}</td>
+              <td class="" id="ricercaeditProprietario${annuncio?.id}">${annuncio.schedaAssociata?.proprietario}</td>
 
+          </g:else>
            	
             <g:if test="${userOk2 == ''+userOk}">
            
@@ -52,7 +58,14 @@
             </g:if>
             <g:else><td>
                 <g:if test="${annuncio.schedaAssociata}">
-                    <g:link action="visualizzaScheda" id="${annuncio.id}" class="btn btn-info" target="_blank"> Visualizza Scheda</g:link>
+                    <div class="btn-group">
+                    <button idAnnuncio="${annuncio.id}" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><i class="icon-pencil icon-white"></i> Opzioni <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><g:link action="visualizzaScheda" id="${annuncio.id}" target="_blank"> Visualizza Scheda</g:link></li>
+                      <li><g:remoteLink action="richiediGestione" id="${annuncio.id}" onSuccess="alert('Notifica inviata correttamente')" onFailure="alert('Si è verificato un errore, riprova.')"> Richiedi Gestione</g:remoteLink></li>
+                    </ul>
+                    </div>
+
                 </g:if>
             </td></g:else>
             
