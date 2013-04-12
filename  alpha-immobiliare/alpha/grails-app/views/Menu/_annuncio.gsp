@@ -18,7 +18,7 @@
 				
 				<label><strong>Telefono:</strong></label>	
 				<input type="text" class="span8" id="telefonoA" placeholder="3295858688...">
-				<a class="btn btn-warning" id="verificaNumero" href="#">Verifica</a>
+				<span id="annuncioGiaPresente"></span><a class="btn btn-warning" id="verificaNumero" href="#">Verifica</a>
 				</div>
 				<span class="help-block myRed">Il campo è obbligatorio</span>
 				%{--<label><strong>Risposta:</strong></label>--}%

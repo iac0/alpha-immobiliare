@@ -44,7 +44,7 @@ function loadInserisciAnnuncio(){
 		trigger:'manual',
 		title:"Con tale numero <br>&egrave; registrata una Agenzia"
 		});
-
+	
 	$('#creaScheda').popover(
 			{
 				title:"Apri scheda",
@@ -143,7 +143,7 @@ function loadInserisciAnnuncio(){
 	   
 	});
 	
-	$("#prezzo,#telefonoA").keyup(function () {
+	$("#prezzo,#telefonoA").keypress(function () {
 		
 		if(event.keyCode == 13){
 		$("#verificaNumero").trigger("click");
@@ -166,20 +166,22 @@ function loadInserisciAnnuncio(){
 				function(data){
 					if(data.annuncio==true)
 					{
-					$("#annuncioIdent").val(data.idAnn);
-					$("#mailIdent").val(data.idAnn);
-					annuncioPresente(data.utente);
-					caricaInserisciAnnuncio();
+					
+					$("#annuncioGiaPresente").tooltip({
+						trigger:'manual',
+						title:"Con tale numero <br>&egrave; gi6agrave; presente un annuncio"
+						});
+					$("#annuncioGiaPresente").tooltip('show');
+					
+					setTimeout("$('#annuncioGiaPresente').tooltip('hide')",5000);
+					$("#telefonoA").val("");
 					}
 					if(data.agenzia==true){
 						$("#verificaNumero").removeClass("btn-warning").addClass("btn-danger");
 						$("#verificaNumero").tooltip('show');
 						playSound();
-						
-						
-						
-						
 						setTimeout("$('#verificaNumero').tooltip('hide')",2500);
+						$("#telefonoA").val("");
 					}
 					else {
 						if(data.agenzia==false && data.annuncio==false){
