@@ -205,6 +205,7 @@ class AnnuncioController {
         result.success = false
         Annuncio elimina = Annuncio.get(params.ident)
         if (elimina) {
+            Notifica.executeUpdate("Delete from Notifica n where n.annuncio = ?" , [elimina])
             elimina.delete(flush: true)
             result.success = true
         }
