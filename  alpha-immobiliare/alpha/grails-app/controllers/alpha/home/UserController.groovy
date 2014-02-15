@@ -1,4 +1,6 @@
 package alpha.home
+
+import alpha.gestioneAnnunci.Notifica
 import alpha.security.*
 import alpha.gestioneAnnunci.Annuncio
 import alpha.anagrafica.Agenzia
@@ -30,13 +32,14 @@ class UserController {
 		User elimina = User.findByUsername(params.username)
 		User assegna = User.findByUsername(params.assegna)
 		if(elimina && assegna){
+            Notifica.executeUpdate("Delete from Notifica n where n.to = ? or n.from = ?",[elimina,elimina])
 			Annuncio.executeUpdate("Update Annuncio a " +
                      "set a.utente = ? where a.utente = ?",
                      [assegna, elimina])
 			Agenzia.executeUpdate("Update Agenzia a " +
                      "set a.utente = ? where a.utente = ?",
                      [assegna, elimina])
-			
+
 		def auth = elimina.getAuthorities()
 		auth.each { Role rol ->
 			UserRole.remove(elimina,rol,true)
