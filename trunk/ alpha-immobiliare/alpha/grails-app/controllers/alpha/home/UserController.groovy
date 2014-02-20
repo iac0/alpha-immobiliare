@@ -49,7 +49,7 @@ class UserController {
 		}
 		render map as JSON
 	}
-	@Secured (["ROLE_ADMIN"])
+	@Secured (["ROLE_ADMIN","ROLE_USER"])
 	def autocomplete(){
 		def map = User.findAllByUsernameIlike("%${params.username}%").collect{
 			[name:it.username]

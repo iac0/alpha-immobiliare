@@ -1,5 +1,5 @@
 <%@ page import="alpha.security.User" %>          
-          <tr class="Annuncio">
+          <tr class="Annuncio" annucioref="${annuncio.id}">
           <td></td>
             <td>${annuncio.utente.username }</td>
             <td>${annuncio.telefono}</td>
@@ -37,7 +37,7 @@
 
           </g:else>
            	
-            <g:if test="${userOk2 == ''+userOk}">
+            <g:if test="${userOk2 == ''+userOk || isAdmin}">
            
             <td>
 			<div class="btn-group">
@@ -54,6 +54,15 @@
             <li class="segnaAgenziaAnnuncio"><a><i class="icon-briefcase"></i> Segna come Agenzia</a></li>
 	          </ul>
 			</div>
+                <g:if test="${isAdmin && annuncio.schedaAssociata}">
+                    <div class="btn-group">
+                        <button idAnnuncio="${annuncio.id}" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><i class="icon-pencil icon-white"></i> Opzioni <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><g:link action="visualizzaScheda" id="${annuncio.id}" target="_blank"> Visualizza Scheda</g:link></li>
+                            <li><g:remoteLink action="richiediGestione" id="${annuncio.id}" onSuccess="alert('Notifica inviata correttamente')" onFailure="alert('Si è verificato un errore, riprova.')"> Richiedi Gestione</g:remoteLink></li>
+                        </ul>
+                    </div>
+                </g:if>
 			</td>
             </g:if>
             <g:else><td>

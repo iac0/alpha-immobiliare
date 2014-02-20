@@ -194,7 +194,7 @@ class AnnuncioController {
         }
 
         def htmlAnn = ""
-        htmlAnn += g.render(template: "/annuncio/risultatiRicerca", collection: annunci)
+        htmlAnn += g.render(template: "/annuncio/risultatiRicerca", collection: annunci, model:[isAdmin:utente.getAuthorities().find{ it.authority.equals("ROLE_ADMIN")}])
 
         render htmlAnn
     }
