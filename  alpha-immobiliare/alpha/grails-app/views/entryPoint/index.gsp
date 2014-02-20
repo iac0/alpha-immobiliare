@@ -55,6 +55,11 @@
             </a>
             <ul class="dropdown-menu">
               <li><a href="../logout/index">Sign Out</a></li>
+                <li>
+                    <a href="#changeyourpwd" data-toggle="modal">
+                       Cambia password
+                    </a>
+                </li>
             </ul>
           </div>
           <g:menu attiva="0"/>
@@ -307,5 +312,30 @@
 		  <a href="#" id="invioEmail" class="btn btn-primary">Invia Messaggio</a>
 		</div>
 	  </div>
-  
+<div class="modal fade" id="changeyourpwd" style="display: none;">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal">x</button>
+        <h3>Cambia password</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row-fluid">
+            <div class="span12">
+                <form class="well clearfix">
+                    <div class="span6">
+                        <label><strong>Messaggio da inviare:</strong></label>
+                        <input class="input-xlarge" id="newpassword" placeholder="Inserisci la password">
+
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Chiudi</a>
+        <a href="#" onclick="$.post('/alpha/user/changePwd',{password:$('#newpassword').val()})" data-dismiss="modal" class="btn btn-primary">Cambia password</a>
+    </div>
+</div>
+</div>
 </html>

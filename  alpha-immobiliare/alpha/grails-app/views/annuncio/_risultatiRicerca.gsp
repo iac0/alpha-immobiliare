@@ -52,17 +52,16 @@
                   </li>
                   <li class="divider"></li>
             <li class="segnaAgenziaAnnuncio"><a><i class="icon-briefcase"></i> Segna come Agenzia</a></li>
-	          </ul>
+                  <g:if test="${isAdmin && annuncio.schedaAssociata}">
+
+
+                              <li><g:remoteLink action="richiediGestione" id="${annuncio.id}" onSuccess="alert('Notifica inviata correttamente')" onFailure="alert('Si è verificato un errore, riprova.')"> <i class="icon-plus"></i>  Richiedi Gestione</g:remoteLink></li>
+
+                  </g:if>
+              </ul>
+
 			</div>
-                <g:if test="${isAdmin && annuncio.schedaAssociata}">
-                    <div class="btn-group">
-                        <button idAnnuncio="${annuncio.id}" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><i class="icon-pencil icon-white"></i> Opzioni <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><g:link action="visualizzaScheda" id="${annuncio.id}" target="_blank"> Visualizza Scheda</g:link></li>
-                            <li><g:remoteLink action="richiediGestione" id="${annuncio.id}" onSuccess="alert('Notifica inviata correttamente')" onFailure="alert('Si è verificato un errore, riprova.')"> Richiedi Gestione</g:remoteLink></li>
-                        </ul>
-                    </div>
-                </g:if>
+
 			</td>
             </g:if>
             <g:else><td>

@@ -8,7 +8,7 @@ import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
 
 class UserController {
-
+    def alphaService
 	@Secured (["ROLE_ADMIN"])
     def nuovoUtente() {
 		println params
@@ -56,4 +56,13 @@ class UserController {
 		}
 		render map as JSON
 	}
+
+    @Secured (["ROLE_ADMIN","ROLE_USER"])
+    def changePwd(){
+       def utente =  alphaService.getUtente()
+        utente.password = params.password
+        utente.save(flush: true)
+        response.sendError(200,"ok")
+
+    }
 }

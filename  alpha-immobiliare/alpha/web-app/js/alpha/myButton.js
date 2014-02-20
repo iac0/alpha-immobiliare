@@ -50,6 +50,7 @@ $(document).ready(function(){
 	
 	$("#creaScheda").click(function(){
 		multiplo = false;
+        window.goTo = $("#annuncioIdent").val();
 		$("#saveAnnuncio").trigger("click");
 		setTimeout(
 				function (){
@@ -171,7 +172,7 @@ function saveScheda(){
 				},
 				
 				function(data){
-					$("#annuncioIdent").val(data.id);
+
 					salvataggioSchedaOk("#responseScheda");
 				})
 		.success(function(){
@@ -203,6 +204,12 @@ function saveScheda(){
 		$(".destroyed").hide("blind",function(){
 			$(".destroyed").remove();
 			$("#principale").show();
+            $("html,body").animate({
+                scrollTop:$("[annucioref="+window.goTo+"]").offset().top -50
+            },1000, function() {
+                $("#annuncioIdent").val("");
+
+            });
 			
 		});
 	});
