@@ -187,7 +187,9 @@ function loadInserisciAnnuncio(){
 						if(data.agenzia==false && data.annuncio==false){
 						$("#verificaNumero").removeClass("btn-warning").addClass("btn-success");
 						$("#saveAnnuncioForm").find("input,label,span,a,select,textarea").show();
-						}
+                        playSoundOk();
+
+                        }
 					}
 					});
 	});
@@ -397,10 +399,19 @@ function showInserisciAnnuncio(){
 function playSound() {
 	$("audio").remove();
 	var lol = '<audio controls="" preload="auto">'+
-	'<source src="/alpha/static/sound/error.wav" controls="">'+
+	'<source src="/alpha/sound/error.wav" controls="">'+
 	'</audio>';
 	$(lol).appendTo("body");
 	var audio = document.getElementsByTagName("audio")[0];
 	audio.play();
 	 }
 
+function playSoundOk() {
+    $("audio").remove();
+    var lol = '<audio controls="" preload="auto">'+
+        '<source src="/alpha/sound/okay.wav" controls="">'+
+        '</audio>';
+    $(lol).appendTo("body");
+    var audio = document.getElementsByTagName("audio")[0];
+    audio.play();
+}

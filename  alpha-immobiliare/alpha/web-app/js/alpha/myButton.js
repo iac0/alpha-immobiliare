@@ -71,14 +71,16 @@ $(document).ready(function(){
 	});
 	
 		$("#eliminaAnnuncioQ").click(function(){
+            var refId=$(this).attr("idAnnuncio");
 			$.post("/alpha/annuncio/elimina",
 					{
-					ident: $(this).attr("idAnnuncio")
+					ident:refId
 					},
 					function(data){
 						if(data.success){
 						 operazioneOk("#EliminaAnnuncio div.span12");
 						pollingMiei();
+                            $("[annucioref="+refId+"]").remove();
 						}
 					});
 		});

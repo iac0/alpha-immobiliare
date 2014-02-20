@@ -272,7 +272,9 @@
     <audio controls preload="auto" style="display:none;">
 	<source src="${resource(dir:'sound/',file:'error.wav') }" controls/>
 	</audio>
-	
+  <audio controls preload="auto" style="display:none;">
+      <source src="${resource(dir:'sound/',file:'okay.wav') }" controls/>
+  </audio>
   </body>
   	<g:render template="/Menu/agenzia" />
   	<g:render template="/Menu/annuncio" />
