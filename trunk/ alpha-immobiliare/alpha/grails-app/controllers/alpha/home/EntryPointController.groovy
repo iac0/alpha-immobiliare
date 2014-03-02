@@ -1,6 +1,7 @@
 package alpha.home
-import grails.plugins.springsecurity.Secured
+
 import alpha.gestioneAnnunci.Annuncio
+import grails.plugins.springsecurity.Secured
 
 class EntryPointController {
 def alphaService

@@ -1,11 +1,13 @@
 package alpha.home
 
-import alpha.gestioneAnnunci.*
 import alpha.anagrafica.Agenzia
+import alpha.gestioneAnnunci.Annuncio
+import alpha.gestioneAnnunci.Appuntamento
+import alpha.gestioneAnnunci.Notifica
+import alpha.gestioneAnnunci.Scheda
 import alpha.security.User
 import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
-
 
 class AnnuncioController {
     def alphaService

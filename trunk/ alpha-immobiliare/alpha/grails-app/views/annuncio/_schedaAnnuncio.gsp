@@ -1,3 +1,4 @@
+<h3>Scheda numero:${annuncio.id}</h3>
 <table id="tableScheda" class="table  table-bordered table-condensed destroyed" annuncioId="${annuncio.id}">
 
         <tbody>
