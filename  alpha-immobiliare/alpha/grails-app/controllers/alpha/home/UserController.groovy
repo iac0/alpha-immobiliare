@@ -1,9 +1,11 @@
 package alpha.home
 
-import alpha.gestioneAnnunci.Notifica
-import alpha.security.*
-import alpha.gestioneAnnunci.Annuncio
 import alpha.anagrafica.Agenzia
+import alpha.gestioneAnnunci.Annuncio
+import alpha.gestioneAnnunci.Notifica
+import alpha.security.Role
+import alpha.security.User
+import alpha.security.UserRole
 import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
 
